@@ -1,10 +1,11 @@
-import 'package:stripe/types/price.dart';
+import 'package:appstitch_stripe/types/price.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/base.dart';
 
 part 'invoiceItem.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class InvoiceItem extends Base {
   InvoiceItem({
     this.amount,
@@ -26,10 +27,10 @@ class InvoiceItem extends Base {
     this.unitAmountDecimal,
   });
 
-  double amount;
+  int amount;
   String currency;
   String customer;
-  double date;
+  int date;
   String description;
   String id;
   String invoice;
@@ -38,10 +39,10 @@ class InvoiceItem extends Base {
   String object;
   Price price;
   bool proration;
-  double quantity;
+  int quantity;
   String subscription;
   List<String> taxRates;
-  double unitAmount;
+  int unitAmount;
   String unitAmountDecimal;
 
   factory InvoiceItem.fromJson(Map<String, dynamic> json) =>

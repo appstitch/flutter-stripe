@@ -1,19 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
 
 part 'paymentMethod.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class PaymentMethod extends Base {
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
+class PaymentMethod extends ConnectOptions {
   PaymentMethod({
     this.customer,
     this.id,
-    this.stripeAccount,
   });
 
   String customer;
   String id;
-  String stripeAccount;
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodFromJson(json);

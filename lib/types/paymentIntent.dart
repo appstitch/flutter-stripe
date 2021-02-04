@@ -1,11 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
-import 'package:stripe/types/transferData.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/transferData.dart';
 
 part 'paymentIntent.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class PaymentIntent extends Base {
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
+class PaymentIntent extends ConnectOptions {
   PaymentIntent({
     this.amount,
     this.amountRefunded,
@@ -27,18 +28,17 @@ class PaymentIntent extends Base {
     this.statementDescriptor,
     this.statementDescriptorSuffix,
     this.status,
-    this.stripeAccount,
     this.testMode,
     this.transferData,
     this.transferGroup,
   });
 
-  double amount;
-  double amountRefunded;
-  double applicationFeeAmount;
+  int amount;
+  int amountRefunded;
+  int applicationFeeAmount;
   String chargeName;
   bool confirm;
-  double created;
+  int created;
   String currency;
   String customer;
   String description;
@@ -53,7 +53,6 @@ class PaymentIntent extends Base {
   String statementDescriptor;
   String statementDescriptorSuffix;
   String status;
-  String stripeAccount;
   bool testMode;
   TransferData transferData;
   String transferGroup;

@@ -10,24 +10,36 @@ CancelPaymentIntentOpts _$CancelPaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return CancelPaymentIntentOpts(
     cancellationReason: _$enumDecodeNullable(
-        _$CancellationReasonEnumMap, json['cancellationReason']),
+        _$CancellationReasonEnumMap, json['cancellation_reason']),
     id: json['id'] as String,
-    stripeAccount: json['stripeAccount'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
 Map<String, dynamic> _$CancelPaymentIntentOptsToJson(
-        CancelPaymentIntentOpts instance) =>
-    <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'cancellationReason':
-          _$CancellationReasonEnumMap[instance.cancellationReason],
-      'id': instance.id,
-      'stripeAccount': instance.stripeAccount,
-    };
+    CancelPaymentIntentOpts instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('cancellation_reason',
+      _$CancellationReasonEnumMap[instance.cancellationReason]);
+  writeNotNull('id', instance.id);
+  return val;
+}
 
 T _$enumDecode<T>(
   Map<T, dynamic> enumValues,
@@ -62,8 +74,8 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$CancellationReasonEnumMap = {
-  CancellationReason.ABANDONED: 'ABANDONED',
-  CancellationReason.DUPLICATE: 'DUPLICATE',
-  CancellationReason.FRAUDULENT: 'FRAUDULENT',
-  CancellationReason.REQUESTED_BY_CUSTOMER: 'REQUESTED_BY_CUSTOMER',
+  CancellationReason.abandoned: 'abandoned',
+  CancellationReason.duplicate: 'duplicate',
+  CancellationReason.fraudulent: 'fraudulent',
+  CancellationReason.requested_by_customer: 'requested_by_customer',
 };

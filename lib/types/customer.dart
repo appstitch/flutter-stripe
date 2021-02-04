@@ -1,13 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/discount.dart';
-import 'package:stripe/types/address.dart';
-import 'package:stripe/types/source.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/discount.dart';
+import 'package:appstitch_stripe/types/address.dart';
+import 'package:appstitch_stripe/types/source.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
 
 part 'customer.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class Customer extends Base {
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
+class Customer extends ConnectOptions {
   Customer({
     this.address,
     this.balance,
@@ -26,12 +27,11 @@ class Customer extends Base {
     this.phone,
     this.preferredLocales,
     this.sources,
-    this.stripeAccount,
   });
 
   Address address;
-  double balance;
-  double created;
+  int balance;
+  int created;
   String currency;
   String defaultSource;
   bool delinquent;
@@ -39,14 +39,14 @@ class Customer extends Base {
   Discount discount;
   String email;
   String invoicePrefix;
+  Map<String, dynamic> invoiceSettings;
   bool livemode;
   Map<String, dynamic> metadata;
   String name;
-  double nextInvoiceSequence;
+  int nextInvoiceSequence;
   String phone;
   List<String> preferredLocales;
   List<Source> sources;
-  String stripeAccount;
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
       _$CustomerFromJson(json);

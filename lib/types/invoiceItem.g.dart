@@ -8,10 +8,10 @@ part of 'invoiceItem.dart';
 
 InvoiceItem _$InvoiceItemFromJson(Map<String, dynamic> json) {
   return InvoiceItem(
-    amount: (json['amount'] as num)?.toDouble(),
+    amount: json['amount'] as int,
     currency: json['currency'] as String,
     customer: json['customer'] as String,
-    date: (json['date'] as num)?.toDouble(),
+    date: json['date'] as int,
     description: json['description'] as String,
     id: json['id'] as String,
     invoice: json['invoice'] as String,
@@ -22,35 +22,47 @@ InvoiceItem _$InvoiceItemFromJson(Map<String, dynamic> json) {
         ? null
         : Price.fromJson(json['price'] as Map<String, dynamic>),
     proration: json['proration'] as bool,
-    quantity: (json['quantity'] as num)?.toDouble(),
+    quantity: json['quantity'] as int,
     subscription: json['subscription'] as String,
-    taxRates: (json['taxRates'] as List)?.map((e) => e as String)?.toList(),
-    unitAmount: (json['unitAmount'] as num)?.toDouble(),
-    unitAmountDecimal: json['unitAmountDecimal'] as String,
+    taxRates: (json['tax_rates'] as List)?.map((e) => e as String)?.toList(),
+    unitAmount: json['unit_amount'] as int,
+    unitAmountDecimal: json['unit_amount_decimal'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String;
 }
 
-Map<String, dynamic> _$InvoiceItemToJson(InvoiceItem instance) =>
-    <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'amount': instance.amount,
-      'currency': instance.currency,
-      'customer': instance.customer,
-      'date': instance.date,
-      'description': instance.description,
-      'id': instance.id,
-      'invoice': instance.invoice,
-      'livemode': instance.livemode,
-      'metadata': instance.metadata,
-      'object': instance.object,
-      'price': instance.price?.toJson(),
-      'proration': instance.proration,
-      'quantity': instance.quantity,
-      'subscription': instance.subscription,
-      'taxRates': instance.taxRates,
-      'unitAmount': instance.unitAmount,
-      'unitAmountDecimal': instance.unitAmountDecimal,
-    };
+Map<String, dynamic> _$InvoiceItemToJson(InvoiceItem instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('amount', instance.amount);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('customer', instance.customer);
+  writeNotNull('date', instance.date);
+  writeNotNull('description', instance.description);
+  writeNotNull('id', instance.id);
+  writeNotNull('invoice', instance.invoice);
+  writeNotNull('livemode', instance.livemode);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('object', instance.object);
+  writeNotNull('price', instance.price?.toJson());
+  writeNotNull('proration', instance.proration);
+  writeNotNull('quantity', instance.quantity);
+  writeNotNull('subscription', instance.subscription);
+  writeNotNull('tax_rates', instance.taxRates);
+  writeNotNull('unit_amount', instance.unitAmount);
+  writeNotNull('unit_amount_decimal', instance.unitAmountDecimal);
+  return val;
+}

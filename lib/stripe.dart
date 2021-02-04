@@ -1,21 +1,10 @@
-library stripe;
+library appstitch_stripe;
 
 import 'package:appstitch_core/core.dart';
-import 'package:stripe/types/base.dart';
-import 'package:stripe/types/createCustomerOpts.dart';
-import 'package:stripe/types/createPaymentIntentOpts.dart';
-import 'package:stripe/types/customer.dart';
-
-import 'package:stripe/types/paymentIntent.dart';
-import 'package:stripe/types/retrieveOpts.dart';
-import 'package:stripe/types/updateCustomerOpts.dart';
-import 'package:stripe/types/updatePaymentIntentOpts.dart';
+import 'package:appstitch_stripe/types.dart';
 
 class AppstitchStripe {
   Core core = Core();
-  int takePayment(int payloadue) {
-    return 6;
-  }
 
   Map<String, dynamic> toJson(Base base) {
     return base.toJson();
@@ -89,5 +78,30 @@ class AppstitchStripe {
     final result = await core.makeRequst("Stripe/retrieveCustomer", payload);
 
     return Customer.fromJson(result);
+  }
+
+  Future<Subscription> createSubscription(CreateSubscriptionOpts opts) async {
+    final payload = toJson(opts);
+
+    final result = await core.makeRequst("Stripe/createSubscription", payload);
+
+    return Subscription.fromJson(result);
+  }
+
+  Future<Subscription> cancelSubscription(RetrieveOpts opts) async {
+    final payload = toJson(opts);
+
+    final result = await core.makeRequst("Stripe/cancelSubscription", payload);
+
+    return Subscription.fromJson(result);
+  }
+
+  Future<Subscription> retrieveSubscription(RetrieveOpts opts) async {
+    final payload = toJson(opts);
+
+    final result =
+        await core.makeRequst("Stripe/retrieveSubscription", payload);
+
+    return Subscription.fromJson(result);
   }
 }

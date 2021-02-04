@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - Initial Release - Beta.
 
-* TODO: Describe initial release.
+- Inital Release
+
+## [0.0.2] - Production Release.
+
+- Production Release

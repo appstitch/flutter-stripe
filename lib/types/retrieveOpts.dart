@@ -1,11 +1,12 @@
-library stripe;
+library appstitch_stripe;
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
 
 part 'retrieveOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class RetrieveOpts extends ConnectOptions {
   RetrieveOpts({
     this.id,

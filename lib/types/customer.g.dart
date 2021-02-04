@@ -11,53 +11,68 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) {
     address: json['address'] == null
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
-    balance: (json['balance'] as num)?.toDouble(),
-    created: (json['created'] as num)?.toDouble(),
+    balance: json['balance'] as int,
+    created: json['created'] as int,
     currency: json['currency'] as String,
-    defaultSource: json['defaultSource'] as String,
+    defaultSource: json['default_source'] as String,
     delinquent: json['delinquent'] as bool,
     description: json['description'] as String,
     discount: json['discount'] == null
         ? null
         : Discount.fromJson(json['discount'] as Map<String, dynamic>),
     email: json['email'] as String,
-    invoicePrefix: json['invoicePrefix'] as String,
+    invoicePrefix: json['invoice_prefix'] as String,
     livemode: json['livemode'] as bool,
     metadata: json['metadata'] as Map<String, dynamic>,
     name: json['name'] as String,
-    nextInvoiceSequence: (json['nextInvoiceSequence'] as num)?.toDouble(),
+    nextInvoiceSequence: json['next_invoice_sequence'] as int,
     phone: json['phone'] as String,
     preferredLocales:
-        (json['preferredLocales'] as List)?.map((e) => e as String)?.toList(),
+        (json['preferred_locales'] as List)?.map((e) => e as String)?.toList(),
     sources: (json['sources'] as List)
         ?.map((e) =>
             e == null ? null : Source.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    stripeAccount: json['stripeAccount'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String
+    ..invoiceSettings = json['invoice_settings'] as Map<String, dynamic>;
 }
 
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'address': instance.address?.toJson(),
-      'balance': instance.balance,
-      'created': instance.created,
-      'currency': instance.currency,
-      'defaultSource': instance.defaultSource,
-      'delinquent': instance.delinquent,
-      'description': instance.description,
-      'discount': instance.discount?.toJson(),
-      'email': instance.email,
-      'invoicePrefix': instance.invoicePrefix,
-      'livemode': instance.livemode,
-      'metadata': instance.metadata,
-      'name': instance.name,
-      'nextInvoiceSequence': instance.nextInvoiceSequence,
-      'phone': instance.phone,
-      'preferredLocales': instance.preferredLocales,
-      'sources': instance.sources?.map((e) => e?.toJson())?.toList(),
-      'stripeAccount': instance.stripeAccount,
-    };
+Map<String, dynamic> _$CustomerToJson(Customer instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('address', instance.address?.toJson());
+  writeNotNull('balance', instance.balance);
+  writeNotNull('created', instance.created);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('default_source', instance.defaultSource);
+  writeNotNull('delinquent', instance.delinquent);
+  writeNotNull('description', instance.description);
+  writeNotNull('discount', instance.discount?.toJson());
+  writeNotNull('email', instance.email);
+  writeNotNull('invoice_prefix', instance.invoicePrefix);
+  writeNotNull('invoice_settings', instance.invoiceSettings);
+  writeNotNull('livemode', instance.livemode);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('name', instance.name);
+  writeNotNull('next_invoice_sequence', instance.nextInvoiceSequence);
+  writeNotNull('phone', instance.phone);
+  writeNotNull('preferred_locales', instance.preferredLocales);
+  writeNotNull('sources', instance.sources?.map((e) => e?.toJson())?.toList());
+  return val;
+}

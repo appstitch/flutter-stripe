@@ -1,6 +1,6 @@
 enum CancellationReason {
-  ABANDONED,
-  DUPLICATE,
-  FRAUDULENT,
-  REQUESTED_BY_CUSTOMER
+  abandoned,
+  duplicate,
+  fraudulent,
+  requested_by_customer
 }

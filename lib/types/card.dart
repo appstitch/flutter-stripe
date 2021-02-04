@@ -1,8 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/source.dart';
+import 'package:appstitch_stripe/types/source.dart';
 part 'card.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class Card extends Source {
   Card({
     this.addressCity,
@@ -28,7 +29,6 @@ class Card extends Source {
     this.name,
     this.object,
     this.source,
-    this.stripeAccount,
     this.tokenizationMethod,
   });
 
@@ -45,8 +45,8 @@ class Card extends Source {
   String customer;
   String cvcCheck;
   String dynamicLast4;
-  double expMonth;
-  double expYear;
+  int expMonth;
+  int expYear;
   String fingerprint;
   String funding;
   String last4;
@@ -55,7 +55,6 @@ class Card extends Source {
   String name;
   String object;
   String source;
-  String stripeAccount;
   String tokenizationMethod;
 
   factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);

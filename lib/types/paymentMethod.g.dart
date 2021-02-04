@@ -10,17 +10,29 @@ PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
   return PaymentMethod(
     customer: json['customer'] as String,
     id: json['id'] as String,
-    stripeAccount: json['stripeAccount'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitchKey'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
-Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) =>
-    <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'customer': instance.customer,
-      'id': instance.id,
-      'stripeAccount': instance.stripeAccount,
-    };
+Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitchKey', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('customer', instance.customer);
+  writeNotNull('id', instance.id);
+  return val;
+}

@@ -9,49 +9,63 @@ part of 'updatePaymentIntentOpts.dart';
 UpdatePaymentIntentOpts _$UpdatePaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return UpdatePaymentIntentOpts(
-    amount: (json['amount'] as num)?.toDouble(),
-    applicationFeeAmount: (json['applicationFeeAmount'] as num)?.toDouble(),
+    amount: json['amount'] as int,
+    applicationFeeAmount: json['application_fee_amount'] as int,
     currency: json['currency'] as String,
     customer: json['customer'] as String,
     description: json['description'] as String,
-    errorOnRequiresAction: json['errorOnRequiresAction'] as bool,
+    errorOnRequiresAction: json['error_on_requires_action'] as bool,
     metadata: json['metadata'] as Map<String, dynamic>,
-    offSession: json['offSession'] as bool,
-    paymentMethod: json['paymentMethod'] as String,
-    paymentMethodTypes:
-        (json['paymentMethodTypes'] as List)?.map((e) => e as String)?.toList(),
-    receiptEmail: json['receiptEmail'] as String,
-    statementDescriptor: json['statementDescriptor'] as String,
-    statementDescriptorSuffix: json['statementDescriptorSuffix'] as String,
-    stripeAccount: json['stripeAccount'] as String,
-    transferData: json['transferData'] == null
+    offSession: json['off_session'] as bool,
+    paymentMethod: json['payment_method'] as String,
+    paymentMethodTypes: (json['payment_method_types'] as List)
+        ?.map((e) => e as String)
+        ?.toList(),
+    receiptEmail: json['receipt_email'] as String,
+    statementDescriptor: json['statement_descriptor'] as String,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+    transferData: json['transfer_data'] == null
         ? null
-        : TransferData.fromJson(json['transferData'] as Map<String, dynamic>),
-    transferGroup: json['transferGroup'] as String,
+        : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
+    transferGroup: json['transfer_group'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
 Map<String, dynamic> _$UpdatePaymentIntentOptsToJson(
-        UpdatePaymentIntentOpts instance) =>
-    <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'amount': instance.amount,
-      'applicationFeeAmount': instance.applicationFeeAmount,
-      'currency': instance.currency,
-      'customer': instance.customer,
-      'description': instance.description,
-      'errorOnRequiresAction': instance.errorOnRequiresAction,
-      'metadata': instance.metadata,
-      'offSession': instance.offSession,
-      'paymentMethod': instance.paymentMethod,
-      'paymentMethodTypes': instance.paymentMethodTypes,
-      'receiptEmail': instance.receiptEmail,
-      'statementDescriptor': instance.statementDescriptor,
-      'statementDescriptorSuffix': instance.statementDescriptorSuffix,
-      'stripeAccount': instance.stripeAccount,
-      'transferData': instance.transferData?.toJson(),
-      'transferGroup': instance.transferGroup,
-    };
+    UpdatePaymentIntentOpts instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('amount', instance.amount);
+  writeNotNull('application_fee_amount', instance.applicationFeeAmount);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('customer', instance.customer);
+  writeNotNull('description', instance.description);
+  writeNotNull('error_on_requires_action', instance.errorOnRequiresAction);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('off_session', instance.offSession);
+  writeNotNull('payment_method', instance.paymentMethod);
+  writeNotNull('payment_method_types', instance.paymentMethodTypes);
+  writeNotNull('receipt_email', instance.receiptEmail);
+  writeNotNull('statement_descriptor', instance.statementDescriptor);
+  writeNotNull(
+      'statement_descriptor_suffix', instance.statementDescriptorSuffix);
+  writeNotNull('transfer_data', instance.transferData?.toJson());
+  writeNotNull('transfer_group', instance.transferGroup);
+  return val;
+}

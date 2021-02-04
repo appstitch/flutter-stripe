@@ -1,22 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'source.dart';
+part of appstitch_stripe;
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Source _$SourceFromJson(Map<String, dynamic> json) {
-  return Source(
-    id: json['id'] as String,
+SubscriptionItem _$SubscriptionItemFromJson(Map<String, dynamic> json) {
+  return SubscriptionItem(
+    plan: json['plan'] as String,
+    price: json['price'] as String,
+    quantity: json['quantity'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..stitchKey = json['stitchKey'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String;
 }
 
-Map<String, dynamic> _$SourceToJson(Source instance) {
+Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -25,10 +27,12 @@ Map<String, dynamic> _$SourceToJson(Source instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('stitchKey', instance.stitchKey);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
-  writeNotNull('id', instance.id);
+  writeNotNull('plan', instance.plan);
+  writeNotNull('price', instance.price);
+  writeNotNull('quantity', instance.quantity);
   return val;
 }

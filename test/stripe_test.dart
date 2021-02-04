@@ -1,22 +1,48 @@
 import 'package:appstitch_core/options.dart';
 import 'package:appstitch_core/core.dart';
+import 'package:appstitch_stripe/types.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:stripe/stripe.dart';
-import 'package:stripe/types/createPaymentIntentOpts.dart';
+import 'package:appstitch_stripe/stripe.dart';
 
 void main() {
   final core = Core();
-  final config = Options(
-      appStitchKey: "645ffc0f-cbc2-57f2-bb8c-dc7790b1208b",
-      clientID: "5fe15fe825eb49001517dd44");
+  final config = Options(appStitchKey: "key", clientID: "client");
   core.initialize(config);
   final stripe = AppstitchStripe();
 
+  test('Create Customer', () async {
+    final customerOpts = CreateCustomerOpts(email: "email@example.com");
+
+    final customer = await stripe.createCustomer(customerOpts);
+    if (customer.object == "customer") {
+      // success
+    }
+  });
+
   test('Create Payment Intent', () async {
     final paymentIntentOpts = CreatePaymentIntentOpts(
-      amount: 100,
+        customer: "cus_abc123",
+        amount: 2500, // $25
+        currency: "usd",
+        confirm: true,
+        receiptEmail: "customer@example.com");
+    final customer = await stripe.createPaymentIntent(paymentIntentOpts);
+
+    if (customer.object == "payment_intent") {
+      // success
+    }
+  });
+
+  test('Create subscription', () async {
+    final subscriptionOpts = CreateSubscriptionOpts(
+      customer: "cus_ABC123456",
+      items: [SubscriptionItemOpts(price: "price_XYZ123456")],
     );
-    final paymentIntent = await stripe.createPaymentIntent(paymentIntentOpts);
+
+    final subscription = await stripe.createSubscription(subscriptionOpts);
+
+    if (subscription.object == "subsription") {
+      // success
+    }
   });
 }

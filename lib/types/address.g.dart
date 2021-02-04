@@ -12,20 +12,33 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     country: json['country'] as String,
     line1: json['line1'] as String,
     line2: json['line2'] as String,
-    postalCode: json['postalCode'] as String,
+    postalCode: json['postal_code'] as String,
     state: json['state'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String;
 }
 
-Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'city': instance.city,
-      'country': instance.country,
-      'line1': instance.line1,
-      'line2': instance.line2,
-      'postalCode': instance.postalCode,
-      'state': instance.state,
-    };
+Map<String, dynamic> _$AddressToJson(Address instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('city', instance.city);
+  writeNotNull('country', instance.country);
+  writeNotNull('line1', instance.line1);
+  writeNotNull('line2', instance.line2);
+  writeNotNull('postal_code', instance.postalCode);
+  writeNotNull('state', instance.state);
+  return val;
+}

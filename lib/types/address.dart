@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/base.dart';
 
 part 'address.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class Address extends Base {
   Address({
     this.city,

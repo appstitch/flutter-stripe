@@ -8,12 +8,12 @@ part of 'paymentIntent.dart';
 
 PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
   return PaymentIntent(
-    amount: (json['amount'] as num)?.toDouble(),
-    amountRefunded: (json['amountRefunded'] as num)?.toDouble(),
-    applicationFeeAmount: (json['applicationFeeAmount'] as num)?.toDouble(),
-    chargeName: json['chargeName'] as String,
+    amount: json['amount'] as int,
+    amountRefunded: json['amount_refunded'] as int,
+    applicationFeeAmount: json['application_fee_amount'] as int,
+    chargeName: json['charge_name'] as String,
     confirm: json['confirm'] as bool,
-    created: (json['created'] as num)?.toDouble(),
+    created: json['created'] as int,
     currency: json['currency'] as String,
     customer: json['customer'] as String,
     description: json['description'] as String,
@@ -21,23 +21,26 @@ PaymentIntent _$PaymentIntentFromJson(Map<String, dynamic> json) {
     invoice: json['invoice'] as String,
     metadata: json['metadata'] as Map<String, dynamic>,
     object: json['object'] as String,
-    offSession: json['offSession'] as bool,
-    paymentMethod: json['paymentMethod'] as String,
-    paymentMethodTypes:
-        (json['paymentMethodTypes'] as List)?.map((e) => e as String)?.toList(),
-    receiptEmail: json['receiptEmail'] as String,
-    statementDescriptor: json['statementDescriptor'] as String,
-    statementDescriptorSuffix: json['statementDescriptorSuffix'] as String,
+    offSession: json['off_session'] as bool,
+    paymentMethod: json['payment_method'] as String,
+    paymentMethodTypes: (json['payment_method_types'] as List)
+        ?.map((e) => e as String)
+        ?.toList(),
+    receiptEmail: json['receipt_email'] as String,
+    statementDescriptor: json['statement_descriptor'] as String,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
     status: json['status'] as String,
-    stripeAccount: json['stripeAccount'] as String,
-    testMode: json['testMode'] as bool,
-    transferData: json['transferData'] == null
+    testMode: json['test_mode'] as bool,
+    transferData: json['transfer_data'] == null
         ? null
-        : TransferData.fromJson(json['transferData'] as Map<String, dynamic>),
-    transferGroup: json['transferGroup'] as String,
+        : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
+    transferGroup: json['transfer_group'] as String,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
 Map<String, dynamic> _$PaymentIntentToJson(PaymentIntent instance) {
@@ -49,31 +52,34 @@ Map<String, dynamic> _$PaymentIntentToJson(PaymentIntent instance) {
     }
   }
 
-  writeNotNull('stitch_id', instance.stitch_id);
-  writeNotNull('type', instance.stripe_error);
-  val['amount'] = instance.amount;
-  val['amountRefunded'] = instance.amountRefunded;
-  val['applicationFeeAmount'] = instance.applicationFeeAmount;
-  val['chargeName'] = instance.chargeName;
-  val['confirm'] = instance.confirm;
-  val['created'] = instance.created;
-  val['currency'] = instance.currency;
-  val['customer'] = instance.customer;
-  val['description'] = instance.description;
-  val['id'] = instance.id;
-  val['invoice'] = instance.invoice;
-  val['metadata'] = instance.metadata;
-  val['object'] = instance.object;
-  val['offSession'] = instance.offSession;
-  val['paymentMethod'] = instance.paymentMethod;
-  val['paymentMethodTypes'] = instance.paymentMethodTypes;
-  val['receiptEmail'] = instance.receiptEmail;
-  val['statementDescriptor'] = instance.statementDescriptor;
-  val['statementDescriptorSuffix'] = instance.statementDescriptorSuffix;
-  val['status'] = instance.status;
-  val['stripeAccount'] = instance.stripeAccount;
-  val['testMode'] = instance.testMode;
-  val['transferData'] = instance.transferData?.toJson();
-  val['transferGroup'] = instance.transferGroup;
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('amount', instance.amount);
+  writeNotNull('amount_refunded', instance.amountRefunded);
+  writeNotNull('application_fee_amount', instance.applicationFeeAmount);
+  writeNotNull('charge_name', instance.chargeName);
+  writeNotNull('confirm', instance.confirm);
+  writeNotNull('created', instance.created);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('customer', instance.customer);
+  writeNotNull('description', instance.description);
+  writeNotNull('id', instance.id);
+  writeNotNull('invoice', instance.invoice);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('object', instance.object);
+  writeNotNull('off_session', instance.offSession);
+  writeNotNull('payment_method', instance.paymentMethod);
+  writeNotNull('payment_method_types', instance.paymentMethodTypes);
+  writeNotNull('receipt_email', instance.receiptEmail);
+  writeNotNull('statement_descriptor', instance.statementDescriptor);
+  writeNotNull(
+      'statement_descriptor_suffix', instance.statementDescriptorSuffix);
+  writeNotNull('status', instance.status);
+  writeNotNull('test_mode', instance.testMode);
+  writeNotNull('transfer_data', instance.transferData?.toJson());
+  writeNotNull('transfer_group', instance.transferGroup);
   return val;
 }

@@ -13,21 +13,34 @@ Price _$PriceFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     metadata: json['metadata'] as Map<String, dynamic>,
     product: json['product'] as String,
-    stripeAccount: json['stripeAccount'] as String,
-    unitAmount: (json['unitAmount'] as num)?.toDouble(),
+    unitAmount: json['unit_amount'] as int,
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
-Map<String, dynamic> _$PriceToJson(Price instance) => <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'active': instance.active,
-      'currency': instance.currency,
-      'id': instance.id,
-      'metadata': instance.metadata,
-      'product': instance.product,
-      'stripeAccount': instance.stripeAccount,
-      'unitAmount': instance.unitAmount,
-    };
+Map<String, dynamic> _$PriceToJson(Price instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('active', instance.active);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('id', instance.id);
+  writeNotNull('metadata', instance.metadata);
+  writeNotNull('product', instance.product);
+  writeNotNull('unit_amount', instance.unitAmount);
+  return val;
+}

@@ -9,30 +9,43 @@ part of 'capturePaymentIntentOpts.dart';
 CapturePaymentIntentOpts _$CapturePaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return CapturePaymentIntentOpts(
-    amountToCapture: (json['amountToCapture'] as num)?.toDouble(),
-    applicationFeeAmount: (json['applicationFeeAmount'] as num)?.toDouble(),
+    amountToCapture: json['amount_to_capture'] as int,
+    applicationFeeAmount: json['application_fee_amount'] as int,
     id: json['id'] as String,
-    statementDescriptor: json['statementDescriptor'] as String,
-    statementDescriptorSuffix: json['statementDescriptorSuffix'] as String,
-    stripeAccount: json['stripeAccount'] as String,
-    transferData: json['transferData'] == null
+    statementDescriptor: json['statement_descriptor'] as String,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+    transferData: json['transfer_data'] == null
         ? null
-        : TransferData.fromJson(json['transferData'] as Map<String, dynamic>),
+        : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
   )
-    ..stitch_id = json['stitch_id'] as String
-    ..stripe_error = json['type'] as String;
+    ..stitchKey = json['stitch_key'] as String
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String
+    ..stripeAccount = json['stripe_account'] as String;
 }
 
 Map<String, dynamic> _$CapturePaymentIntentOptsToJson(
-        CapturePaymentIntentOpts instance) =>
-    <String, dynamic>{
-      'stitch_id': instance.stitch_id,
-      'type': instance.stripe_error,
-      'amountToCapture': instance.amountToCapture,
-      'applicationFeeAmount': instance.applicationFeeAmount,
-      'id': instance.id,
-      'statementDescriptor': instance.statementDescriptor,
-      'statementDescriptorSuffix': instance.statementDescriptorSuffix,
-      'stripeAccount': instance.stripeAccount,
-      'transferData': instance.transferData?.toJson(),
-    };
+    CapturePaymentIntentOpts instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
+  writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('amount_to_capture', instance.amountToCapture);
+  writeNotNull('application_fee_amount', instance.applicationFeeAmount);
+  writeNotNull('id', instance.id);
+  writeNotNull('statement_descriptor', instance.statementDescriptor);
+  writeNotNull(
+      'statement_descriptor_suffix', instance.statementDescriptorSuffix);
+  writeNotNull('transfer_data', instance.transferData?.toJson());
+  return val;
+}

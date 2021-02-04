@@ -1,17 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
 
 part 'price.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class Price extends Base {
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
+class Price extends ConnectOptions {
   Price({
     this.active,
     this.currency,
     this.id,
     this.metadata,
     this.product,
-    this.stripeAccount,
     this.unitAmount,
   });
 
@@ -20,8 +20,7 @@ class Price extends Base {
   String id;
   Map<String, dynamic> metadata;
   String product;
-  String stripeAccount;
-  double unitAmount;
+  int unitAmount;
 
   factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
   Map<String, dynamic> toJson() => _$PriceToJson(this);

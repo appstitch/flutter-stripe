@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
-import 'package:stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
 
 part 'confirmPaymentIntentOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class ConfirmPaymentIntentOpts extends ConnectOptions {
   ConfirmPaymentIntentOpts({
     this.errorOnRequiresAction,
@@ -16,7 +16,6 @@ class ConfirmPaymentIntentOpts extends ConnectOptions {
     this.receiptEmail,
     this.statementDescriptor,
     this.statementDescriptorSuffix,
-    this.stripeAccount,
   });
 
   bool errorOnRequiresAction;
@@ -28,7 +27,6 @@ class ConfirmPaymentIntentOpts extends ConnectOptions {
   String receiptEmail;
   String statementDescriptor;
   String statementDescriptorSuffix;
-  String stripeAccount;
 
   factory ConfirmPaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$ConfirmPaymentIntentOptsFromJson(json);

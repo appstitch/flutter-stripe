@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/connectOptions.dart';
-import 'package:stripe/types/transferData.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/transferData.dart';
 
 part 'updatePaymentIntentOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class UpdatePaymentIntentOpts extends ConnectOptions {
   UpdatePaymentIntentOpts({
     this.amount,
@@ -21,13 +21,12 @@ class UpdatePaymentIntentOpts extends ConnectOptions {
     this.receiptEmail,
     this.statementDescriptor,
     this.statementDescriptorSuffix,
-    this.stripeAccount,
     this.transferData,
     this.transferGroup,
   });
 
-  double amount;
-  double applicationFeeAmount;
+  int amount;
+  int applicationFeeAmount;
   String currency;
   String customer;
   String description;
@@ -40,7 +39,6 @@ class UpdatePaymentIntentOpts extends ConnectOptions {
 
   String statementDescriptor;
   String statementDescriptorSuffix;
-  String stripeAccount;
   TransferData transferData;
   String transferGroup;
 

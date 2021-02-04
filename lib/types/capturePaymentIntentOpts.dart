@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/connectOptions.dart';
-import 'package:stripe/types/transferData.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/transferData.dart';
 
 part 'capturePaymentIntentOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class CapturePaymentIntentOpts extends ConnectOptions {
   CapturePaymentIntentOpts({
     this.amountToCapture,
@@ -13,16 +13,14 @@ class CapturePaymentIntentOpts extends ConnectOptions {
     this.id,
     this.statementDescriptor,
     this.statementDescriptorSuffix,
-    this.stripeAccount,
     this.transferData,
   });
 
-  double amountToCapture;
-  double applicationFeeAmount;
+  int amountToCapture;
+  int applicationFeeAmount;
   String id;
   String statementDescriptor;
   String statementDescriptorSuffix;
-  String stripeAccount;
   TransferData transferData;
 
   factory CapturePaymentIntentOpts.fromJson(Map<String, dynamic> json) =>

@@ -1,14 +1,14 @@
-library stripe;
+library appstitch_stripe;
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
-import 'package:stripe/types/connectOptions.dart';
-import 'package:stripe/types/transferData.dart';
-import 'package:stripe/types/method.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/transferData.dart';
+import 'package:appstitch_stripe/types/method.dart';
 
 part 'createPaymentIntentOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class CreatePaymentIntentOpts extends ConnectOptions {
   CreatePaymentIntentOpts({
     this.amount,
@@ -29,13 +29,12 @@ class CreatePaymentIntentOpts extends ConnectOptions {
     this.receiptEmail,
     this.statementDescriptor,
     this.statementDescriptorSuffix,
-    this.stripeAccount,
     this.transferData,
     this.transferGroup,
   });
 
-  double amount;
-  double applicationFeeAmount;
+  int amount;
+  int applicationFeeAmount;
   Method captureMethod;
   bool confirm;
   Method confirmationMethod;
@@ -52,7 +51,6 @@ class CreatePaymentIntentOpts extends ConnectOptions {
   String receiptEmail;
   String statementDescriptor;
   String statementDescriptorSuffix;
-  String stripeAccount;
   TransferData transferData;
   String transferGroup;
 

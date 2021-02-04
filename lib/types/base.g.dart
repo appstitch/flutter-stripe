@@ -8,8 +8,11 @@ part of 'base.dart';
 
 Base _$BaseFromJson(Map<String, dynamic> json) {
   return Base(
-    stitch_id: json['stitch_id'] as String,
-  )..stripe_error = json['type'] as String;
+    stitchKey: json['stitchKey'] as String,
+  )
+    ..stripeError = json['type'] as String
+    ..message = json['message'] as String
+    ..param = json['param'] as String;
 }
 
 Map<String, dynamic> _$BaseToJson(Base instance) {
@@ -21,7 +24,9 @@ Map<String, dynamic> _$BaseToJson(Base instance) {
     }
   }
 
-  writeNotNull('stitch_id', instance.stitch_id);
-  writeNotNull('type', instance.stripe_error);
+  writeNotNull('stitchKey', instance.stitchKey);
+  writeNotNull('type', instance.stripeError);
+  writeNotNull('message', instance.message);
+  writeNotNull('param', instance.param);
   return val;
 }

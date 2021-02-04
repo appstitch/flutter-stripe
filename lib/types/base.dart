@@ -5,12 +5,15 @@ part 'base.g.dart';
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Base {
   Base({
-    this.stitch_id,
+    this.stitchKey,
   });
-  String stitch_id;
+  String stitchKey;
 
   @JsonKey(name: 'type')
-  String stripe_error;
+  String stripeError;
+  String message;
+  String param;
+  String object;
 
   factory Base.fromJson(Map<String, dynamic> json) => _$BaseFromJson(json);
   Map<String, dynamic> toJson() => _$BaseToJson(this);

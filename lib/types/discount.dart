@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/base.dart';
+import 'package:appstitch_stripe/types/base.dart';
 
 part 'discount.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class Discount extends Base {
   Discount({
     this.customer,
@@ -13,8 +14,8 @@ class Discount extends Base {
   });
 
   String customer;
-  double end;
-  double start;
+  int end;
+  int start;
   String subscription;
 
   factory Discount.fromJson(Map<String, dynamic> json) =>

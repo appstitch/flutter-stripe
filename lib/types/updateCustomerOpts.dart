@@ -1,12 +1,13 @@
-library stripe;
+library appstitch_stripe;
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stripe/types/connectOptions.dart';
-import 'package:stripe/types/address.dart';
+import 'package:appstitch_stripe/types/connectOptions.dart';
+import 'package:appstitch_stripe/types/address.dart';
 
 part 'updateCustomerOpts.g.dart';
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(
+    explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class UpdateCustomerOpts extends ConnectOptions {
   UpdateCustomerOpts({
     this.address,
@@ -24,10 +25,9 @@ class UpdateCustomerOpts extends ConnectOptions {
     this.preferredLocals,
     this.promotionCode,
     this.source,
-    this.stripeAccount,
   });
   Address address;
-  double balance;
+  int balance;
   String coupon;
   String description;
   String email;
@@ -35,13 +35,12 @@ class UpdateCustomerOpts extends ConnectOptions {
   String invoicePrefix;
   Map<String, dynamic> metadata;
   String name;
-  double nextInvoiceSequence;
+  int nextInvoiceSequence;
   String paymentMethod;
   String phone;
   List<String> preferredLocals;
   String promotionCode;
   String source;
-  String stripeAccount;
 
   factory UpdateCustomerOpts.fromJson(Map<String, dynamic> json) =>
       _$UpdateCustomerOptsFromJson(json);
