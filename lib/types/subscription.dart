@@ -1,9 +1,13 @@
 library appstitch_stripe;
 
+import 'package:appstitch_stripe/types.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:appstitch_stripe/types/connectOptions.dart';
-import 'package:appstitch_stripe/types/subscriptionItem.dart';
+
 import 'package:appstitch_stripe/types/transferData.dart';
+import 'package:appstitch_stripe/types/subscriptionItemList.dart';
+
+import 'subscriptionItemList.dart';
 
 part 'subscription.g.dart';
 
@@ -24,8 +28,8 @@ class Subscription extends ConnectOptions {
     this.items,
     this.metadata,
     this.object,
-    this.plan,
-    this.price,
+    // this.plan,
+    // this.price,
     this.subscriptionName,
     this.transferData,
   });
@@ -40,11 +44,12 @@ class Subscription extends ConnectOptions {
   String description;
   String id;
   String invoice;
-  List<SubscriptionItem> items;
+  SubscriptionItemList items;
+
   Map<String, dynamic> metadata;
   String object;
-  String plan;
-  String price;
+  // Plan plan;
+  // String price;
   String subscriptionName;
   TransferData transferData;
 

@@ -9,6 +9,7 @@ part of 'confirmPaymentIntentOpts.dart';
 ConfirmPaymentIntentOpts _$ConfirmPaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return ConfirmPaymentIntentOpts(
+    id: json['id'] as String,
     errorOnRequiresAction: json['error_on_requires_action'] as bool,
     mandate: json['mandate'] as String,
     offSession: json['off_session'] as bool,
@@ -21,10 +22,11 @@ ConfirmPaymentIntentOpts _$ConfirmPaymentIntentOptsFromJson(
     statementDescriptor: json['statement_descriptor'] as String,
     statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
+    ..object = json['object'] as String
     ..stripeAccount = json['stripe_account'] as String;
 }
 
@@ -38,11 +40,13 @@ Map<String, dynamic> _$ConfirmPaymentIntentOptsToJson(
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('object', instance.object);
   writeNotNull('stripe_account', instance.stripeAccount);
+  writeNotNull('id', instance.id);
   writeNotNull('error_on_requires_action', instance.errorOnRequiresAction);
   writeNotNull('mandate', instance.mandate);
   writeNotNull('off_session', instance.offSession);

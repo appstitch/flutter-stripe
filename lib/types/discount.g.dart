@@ -13,10 +13,12 @@ Discount _$DiscountFromJson(Map<String, dynamic> json) {
     start: json['start'] as int,
     subscription: json['subscription'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
+    ..id = json['id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
-    ..param = json['param'] as String;
+    ..param = json['param'] as String
+    ..object = json['object'] as String;
 }
 
 Map<String, dynamic> _$DiscountToJson(Discount instance) {
@@ -28,10 +30,12 @@ Map<String, dynamic> _$DiscountToJson(Discount instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
+  writeNotNull('id', instance.id);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('object', instance.object);
   writeNotNull('customer', instance.customer);
   writeNotNull('end', instance.end);
   writeNotNull('start', instance.start);

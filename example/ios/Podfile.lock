@@ -1,0 +1,29 @@
+PODS:
+  - appstitch_stripe (1.0.0):
+    - Flutter
+    - Stripe (~> 19.4.0)
+  - Flutter (1.0.0)
+  - Stripe (19.4.0)
+
+DEPENDENCIES:
+  - appstitch_stripe (from `.symlinks/plugins/appstitch_stripe/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - Stripe
+
+EXTERNAL SOURCES:
+  appstitch_stripe:
+    :path: ".symlinks/plugins/appstitch_stripe/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  appstitch_stripe: 2a0229ac2cad405d7455cf54c6ae23ffb59354d7
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Stripe: 92f1c73a9dbd3c54277ed06a1fea6e08f20414c6
+
+PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
+
+COCOAPODS: 1.10.1

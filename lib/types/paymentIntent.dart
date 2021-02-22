@@ -33,6 +33,8 @@ class PaymentIntent extends ConnectOptions {
     this.transferGroup,
   });
 
+  String clientSecret;
+
   int amount;
   int amountRefunded;
   int applicationFeeAmount;

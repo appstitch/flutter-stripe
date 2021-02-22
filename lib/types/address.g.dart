@@ -15,10 +15,12 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     postalCode: json['postal_code'] as String,
     state: json['state'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
+    ..id = json['id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
-    ..param = json['param'] as String;
+    ..param = json['param'] as String
+    ..object = json['object'] as String;
 }
 
 Map<String, dynamic> _$AddressToJson(Address instance) {
@@ -30,10 +32,12 @@ Map<String, dynamic> _$AddressToJson(Address instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
+  writeNotNull('id', instance.id);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('object', instance.object);
   writeNotNull('city', instance.city);
   writeNotNull('country', instance.country);
   writeNotNull('line1', instance.line1);

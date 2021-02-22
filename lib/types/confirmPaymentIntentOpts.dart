@@ -7,6 +7,7 @@ part 'confirmPaymentIntentOpts.g.dart';
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class ConfirmPaymentIntentOpts extends ConnectOptions {
   ConfirmPaymentIntentOpts({
+    this.id,
     this.errorOnRequiresAction,
     this.mandate,
     this.offSession,
@@ -18,6 +19,7 @@ class ConfirmPaymentIntentOpts extends ConnectOptions {
     this.statementDescriptorSuffix,
   });
 
+  String id;
   bool errorOnRequiresAction;
   String mandate;
   bool offSession;

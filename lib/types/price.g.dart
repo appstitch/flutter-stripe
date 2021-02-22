@@ -15,10 +15,11 @@ Price _$PriceFromJson(Map<String, dynamic> json) {
     product: json['product'] as String,
     unitAmount: json['unit_amount'] as int,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
+    ..object = json['object'] as String
     ..stripeAccount = json['stripe_account'] as String;
 }
 
@@ -31,10 +32,11 @@ Map<String, dynamic> _$PriceToJson(Price instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('object', instance.object);
   writeNotNull('stripe_account', instance.stripeAccount);
   writeNotNull('active', instance.active);
   writeNotNull('currency', instance.currency);

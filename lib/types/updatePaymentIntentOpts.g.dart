@@ -29,10 +29,12 @@ UpdatePaymentIntentOpts _$UpdatePaymentIntentOptsFromJson(
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
     transferGroup: json['transfer_group'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
+    ..id = json['id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
+    ..object = json['object'] as String
     ..stripeAccount = json['stripe_account'] as String;
 }
 
@@ -46,10 +48,12 @@ Map<String, dynamic> _$UpdatePaymentIntentOptsToJson(
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
+  writeNotNull('id', instance.id);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('object', instance.object);
   writeNotNull('stripe_account', instance.stripeAccount);
   writeNotNull('amount', instance.amount);
   writeNotNull('application_fee_amount', instance.applicationFeeAmount);

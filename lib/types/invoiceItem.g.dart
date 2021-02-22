@@ -28,7 +28,7 @@ InvoiceItem _$InvoiceItemFromJson(Map<String, dynamic> json) {
     unitAmount: json['unit_amount'] as int,
     unitAmountDecimal: json['unit_amount_decimal'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String;
@@ -43,7 +43,7 @@ Map<String, dynamic> _$InvoiceItemToJson(InvoiceItem instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);

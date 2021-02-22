@@ -5,9 +5,7 @@ part 'connectOptions.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class ConnectOptions extends Base {
-  ConnectOptions({
-    this.stripeAccount,
-  });
+  ConnectOptions({this.stripeAccount});
 
   String stripeAccount;
 

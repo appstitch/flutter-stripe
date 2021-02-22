@@ -5,10 +5,11 @@ part 'base.g.dart';
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class Base {
   Base({
-    this.stitchKey,
+    this.blueprintId,
   });
-  String stitchKey;
+  String blueprintId;
 
+  String id;
   @JsonKey(name: 'type')
   String stripeError;
   String message;

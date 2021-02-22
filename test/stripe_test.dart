@@ -8,6 +8,8 @@ void main() {
   final core = Core();
   final config = Options(appStitchKey: "key", clientID: "client");
   core.initialize(config);
+
+  core.setAuthToken("token");
   final stripe = AppstitchStripe();
 
   test('Create Customer', () async {
@@ -26,9 +28,9 @@ void main() {
         currency: "usd",
         confirm: true,
         receiptEmail: "customer@example.com");
-    final customer = await stripe.createPaymentIntent(paymentIntentOpts);
+    final paymentIntent = await stripe.createPaymentIntent(paymentIntentOpts);
 
-    if (customer.object == "payment_intent") {
+    if (paymentIntent.object == "payment_intent") {
       // success
     }
   });

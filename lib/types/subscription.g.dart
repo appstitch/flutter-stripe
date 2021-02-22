@@ -18,21 +18,17 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
     description: json['description'] as String,
     id: json['id'] as String,
     invoice: json['invoice'] as String,
-    items: (json['items'] as List)
-        ?.map((e) => e == null
-            ? null
-            : SubscriptionItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    items: json['items'] == null
+        ? null
+        : SubscriptionItemList.fromJson(json['items'] as Map<String, dynamic>),
     metadata: json['metadata'] as Map<String, dynamic>,
     object: json['object'] as String,
-    plan: json['plan'] as String,
-    price: json['price'] as String,
     subscriptionName: json['subscription_name'] as String,
     transferData: json['transfer_data'] == null
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
@@ -48,7 +44,7 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
@@ -63,11 +59,9 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
   writeNotNull('description', instance.description);
   writeNotNull('id', instance.id);
   writeNotNull('invoice', instance.invoice);
-  writeNotNull('items', instance.items?.map((e) => e?.toJson())?.toList());
+  writeNotNull('items', instance.items?.toJson());
   writeNotNull('metadata', instance.metadata);
   writeNotNull('object', instance.object);
-  writeNotNull('plan', instance.plan);
-  writeNotNull('price', instance.price);
   writeNotNull('subscription_name', instance.subscriptionName);
   writeNotNull('transfer_data', instance.transferData?.toJson());
   return val;

@@ -6,8 +6,8 @@ part of 'card.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Card _$CardFromJson(Map<String, dynamic> json) {
-  return Card(
+CreditCard _$CreditCardFromJson(Map<String, dynamic> json) {
+  return CreditCard(
     addressCity: json['address_city'] as String,
     addressCountry: json['address_country'] as String,
     addressLine1: json['address_line1'] as String,
@@ -33,13 +33,23 @@ Card _$CardFromJson(Map<String, dynamic> json) {
     source: json['source'] as String,
     tokenizationMethod: json['tokenization_method'] as String,
   )
-    ..stitchKey = json['stitch_key'] as String
+    ..blueprintId = json['blueprint_id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
-    ..param = json['param'] as String;
+    ..param = json['param'] as String
+    ..amount = json['amount'] as num
+    ..clientSecret = json['client_secret'] as String
+    ..created = json['created'] as num
+    ..currency = json['currency'] as String
+    ..flow = json['flow'] as String
+    ..sourceId = json['source_id'] as String
+    ..livemode = json['livemode'] as bool
+    ..statementDescriptor = json['statement_descriptor'] as String
+    ..status = json['status'] as String
+    ..usage = json['usage'] as String;
 }
 
-Map<String, dynamic> _$CardToJson(Card instance) {
+Map<String, dynamic> _$CreditCardToJson(CreditCard instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -48,10 +58,20 @@ Map<String, dynamic> _$CardToJson(Card instance) {
     }
   }
 
-  writeNotNull('stitch_key', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
+  writeNotNull('amount', instance.amount);
+  writeNotNull('client_secret', instance.clientSecret);
+  writeNotNull('created', instance.created);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('flow', instance.flow);
+  writeNotNull('source_id', instance.sourceId);
+  writeNotNull('livemode', instance.livemode);
+  writeNotNull('statement_descriptor', instance.statementDescriptor);
+  writeNotNull('status', instance.status);
+  writeNotNull('usage', instance.usage);
   writeNotNull('address_city', instance.addressCity);
   writeNotNull('address_country', instance.addressCountry);
   writeNotNull('address_line1', instance.addressLine1);

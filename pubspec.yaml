@@ -1,6 +1,6 @@
 name: appstitch_stripe
 description: Appstitch client library for Stripe integrations.
-version: 0.0.2
+version: 1.0.3
 homepage: https://appstitch.dev
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  appstitch_core: ^0.0.7
+  appstitch_core: ^1.0.0
   json_annotation: ^3.1.1
 dev_dependencies:
   flutter_test:
@@ -21,3 +21,10 @@ dev_dependencies:
   json_serializable: ^3.5.1
 
 flutter:
+  plugin:
+    platforms:
+      android:
+        package: dev.appstitch.stripe
+        pluginClass: AppstitchStripePlugin
+      ios:
+        pluginClass: AppstitchStripePlugin

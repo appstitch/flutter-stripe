@@ -22,7 +22,7 @@ class Address extends Base {
   String postalCode;
   String state;
 
-  factory Address.fromJson(Map<String, dynamic> json) =>
+  factory Address.fromJson(Map<dynamic, dynamic> json) =>
       _$AddressFromJson(json);
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

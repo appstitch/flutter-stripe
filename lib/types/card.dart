@@ -4,8 +4,8 @@ part 'card.g.dart';
 
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
-class Card extends Source {
-  Card({
+class CreditCard extends Source {
+  CreditCard({
     this.addressCity,
     this.addressCountry,
     this.addressLine1,
@@ -57,6 +57,7 @@ class Card extends Source {
   String source;
   String tokenizationMethod;
 
-  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
-  Map<String, dynamic> toJson() => _$CardToJson(this);
+  factory CreditCard.fromJson(Map<String, dynamic> json) =>
+      _$CreditCardFromJson(json);
+  Map<String, dynamic> toJson() => _$CreditCardToJson(this);
 }

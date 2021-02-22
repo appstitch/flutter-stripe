@@ -8,14 +8,17 @@ part of appstitch_stripe;
 
 SubscriptionItem _$SubscriptionItemFromJson(Map<String, dynamic> json) {
   return SubscriptionItem(
-    plan: json['plan'] as String,
-    price: json['price'] as String,
-    quantity: json['quantity'] as String,
+    price: json['price'] == null
+        ? null
+        : Price.fromJson(json['price'] as Map<String, dynamic>),
+    quantity: json['quantity'] as int,
   )
-    ..stitchKey = json['stitchKey'] as String
+    ..blueprintId = json['blueprint_id'] as String
+    ..id = json['id'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
-    ..param = json['param'] as String;
+    ..param = json['param'] as String
+    ..object = json['object'] as String;
 }
 
 Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) {
@@ -27,12 +30,13 @@ Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) {
     }
   }
 
-  writeNotNull('stitchKey', instance.stitchKey);
+  writeNotNull('blueprint_id', instance.blueprintId);
+  writeNotNull('id', instance.id);
   writeNotNull('type', instance.stripeError);
   writeNotNull('message', instance.message);
   writeNotNull('param', instance.param);
-  writeNotNull('plan', instance.plan);
-  writeNotNull('price', instance.price);
+  writeNotNull('object', instance.object);
+  writeNotNull('price', instance.price?.toJson());
   writeNotNull('quantity', instance.quantity);
   return val;
 }
