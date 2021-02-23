@@ -28,6 +28,10 @@ CreatePaymentIntentOpts _$CreatePaymentIntentOptsFromJson(
     paymentMethodTypes: (json['payment_method_types'] as List)
         ?.map((e) => e as String)
         ?.toList(),
+    paymentMethodData: json['payment_method_data'] == null
+        ? null
+        : PaymentMethodData.fromJson(
+            json['payment_method_data'] as Map<String, dynamic>),
     receiptEmail: json['receipt_email'] as String,
     statementDescriptor: json['statement_descriptor'] as String,
     statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
@@ -35,6 +39,9 @@ CreatePaymentIntentOpts _$CreatePaymentIntentOptsFromJson(
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
     transferGroup: json['transfer_group'] as String,
+    card: json['card'] == null
+        ? null
+        : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
   )
     ..blueprintId = json['blueprint_id'] as String
     ..id = json['id'] as String
@@ -77,6 +84,7 @@ Map<String, dynamic> _$CreatePaymentIntentOptsToJson(
   writeNotNull('off_session', instance.offSession);
   writeNotNull('on_behalf_of', instance.onBehalfOf);
   writeNotNull('payment_method', instance.paymentMethod);
+  writeNotNull('payment_method_data', instance.paymentMethodData?.toJson());
   writeNotNull('payment_method_types', instance.paymentMethodTypes);
   writeNotNull('receipt_email', instance.receiptEmail);
   writeNotNull('statement_descriptor', instance.statementDescriptor);
@@ -84,6 +92,7 @@ Map<String, dynamic> _$CreatePaymentIntentOptsToJson(
       'statement_descriptor_suffix', instance.statementDescriptorSuffix);
   writeNotNull('transfer_data', instance.transferData?.toJson());
   writeNotNull('transfer_group', instance.transferGroup);
+  writeNotNull('card', instance.card?.toJson());
   return val;
 }
 

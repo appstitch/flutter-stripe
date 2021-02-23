@@ -1,7 +1,3 @@
-import 'package:appstitch_stripe/types/address.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:appstitch_stripe/types/source.dart';
-
 class CreateCardOpts {
   String addressCity;
   String addressCountry;

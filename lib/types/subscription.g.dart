@@ -28,15 +28,21 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
   )
-    ..blueprintId = json['blueprint_id'] as String
+    ..blueprintId = json['blueprintId'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..stripeAccount = json['stripeAccount'] as String;
 }
 
 Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'blueprintId': instance.blueprintId,
+    'type': instance.stripeError,
+    'message': instance.message,
+    'param': instance.param,
+    'stripeAccount': instance.stripeAccount,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -44,11 +50,6 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
     }
   }
 
-  writeNotNull('blueprint_id', instance.blueprintId);
-  writeNotNull('type', instance.stripeError);
-  writeNotNull('message', instance.message);
-  writeNotNull('param', instance.param);
-  writeNotNull('stripe_account', instance.stripeAccount);
   writeNotNull('cancel_at_period_end', instance.cancelAtPeriodEnd);
   writeNotNull('current_period_end', instance.currentPeriodEnd);
   writeNotNull('current_period_start', instance.currentPeriodStart);

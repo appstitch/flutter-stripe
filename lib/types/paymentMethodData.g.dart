@@ -1,23 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'token.dart';
+part of 'paymentMethodData.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Token _$TokenFromJson(Map<String, dynamic> json) {
-  return Token(
+PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) {
+  return PaymentMethodData(
     card: json['card'] == null
         ? null
         : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
-    created: (json['created'] as num)?.toDouble(),
-    livemode: json['livemode'] as bool,
-    tokenId: json['token_id'] as String,
+    type: json['type'] as String,
   );
 }
 
-Map<String, dynamic> _$TokenToJson(Token instance) {
+Map<String, dynamic> _$PaymentMethodDataToJson(PaymentMethodData instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -27,8 +25,6 @@ Map<String, dynamic> _$TokenToJson(Token instance) {
   }
 
   writeNotNull('card', instance.card?.toJson());
-  writeNotNull('created', instance.created);
-  writeNotNull('livemode', instance.livemode);
-  writeNotNull('token_id', instance.tokenId);
+  writeNotNull('type', instance.type);
   return val;
 }

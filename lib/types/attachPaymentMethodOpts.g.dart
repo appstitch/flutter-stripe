@@ -11,6 +11,7 @@ AttachPaymentMethodOpts _$AttachPaymentMethodOptsFromJson(
   return AttachPaymentMethodOpts(
     customer: json['customer'] as String,
     id: json['id'] as String,
+    setDefault: json['setDefault'] as bool,
   );
 }
 
@@ -26,5 +27,6 @@ Map<String, dynamic> _$AttachPaymentMethodOptsToJson(
 
   writeNotNull('customer', instance.customer);
   writeNotNull('id', instance.id);
+  writeNotNull('setDefault', instance.setDefault);
   return val;
 }

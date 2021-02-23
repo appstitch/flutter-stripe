@@ -20,23 +20,30 @@ UpdateCustomerOpts _$UpdateCustomerOptsFromJson(Map<String, dynamic> json) {
     metadata: json['metadata'] as Map<String, dynamic>,
     name: json['name'] as String,
     nextInvoiceSequence: json['next_invoice_sequence'] as int,
-    paymentMethod: json['payment_method'] as String,
+    defaultSource: json['default_source'] as String,
     phone: json['phone'] as String,
     preferredLocals:
         (json['preferred_locals'] as List)?.map((e) => e as String)?.toList(),
     promotionCode: json['promotion_code'] as String,
     source: json['source'] as String,
   )
-    ..blueprintId = json['blueprint_id'] as String
+    ..blueprintId = json['blueprintId'] as String
     ..stripeError = json['type'] as String
     ..message = json['message'] as String
     ..param = json['param'] as String
     ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..stripeAccount = json['stripeAccount'] as String;
 }
 
 Map<String, dynamic> _$UpdateCustomerOptsToJson(UpdateCustomerOpts instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'blueprintId': instance.blueprintId,
+    'type': instance.stripeError,
+    'message': instance.message,
+    'param': instance.param,
+    'object': instance.object,
+    'stripeAccount': instance.stripeAccount,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -44,12 +51,6 @@ Map<String, dynamic> _$UpdateCustomerOptsToJson(UpdateCustomerOpts instance) {
     }
   }
 
-  writeNotNull('blueprint_id', instance.blueprintId);
-  writeNotNull('type', instance.stripeError);
-  writeNotNull('message', instance.message);
-  writeNotNull('param', instance.param);
-  writeNotNull('object', instance.object);
-  writeNotNull('stripe_account', instance.stripeAccount);
   writeNotNull('address', instance.address?.toJson());
   writeNotNull('balance', instance.balance);
   writeNotNull('coupon', instance.coupon);
@@ -60,7 +61,7 @@ Map<String, dynamic> _$UpdateCustomerOptsToJson(UpdateCustomerOpts instance) {
   writeNotNull('metadata', instance.metadata);
   writeNotNull('name', instance.name);
   writeNotNull('next_invoice_sequence', instance.nextInvoiceSequence);
-  writeNotNull('payment_method', instance.paymentMethod);
+  writeNotNull('default_source', instance.defaultSource);
   writeNotNull('phone', instance.phone);
   writeNotNull('preferred_locals', instance.preferredLocals);
   writeNotNull('promotion_code', instance.promotionCode);

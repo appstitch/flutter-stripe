@@ -21,3 +21,13 @@
 ## [1.0.3] - Production Release.
 
 - Added id to Base object
+
+## [1.0.4] - 2021-02-23
+
+### Added
+
+Stripe Example
+
+- Create a customer
+- Create a subscription
+- create a payment intent

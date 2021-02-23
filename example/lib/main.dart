@@ -1,13 +1,7 @@
 import 'package:appstitch_core/options.dart';
 import 'package:appstitch_core/core.dart';
-import 'package:appstitch_stripe/native_stripe/card_form_payment_request.dart';
 import 'package:appstitch_stripe/types.dart';
 import 'package:appstitch_stripe/stripe.dart';
-import 'package:appstitch_stripe/types/androidPayLineItem.dart';
-import 'package:appstitch_stripe/types/androidPayOpts.dart';
-import 'package:appstitch_stripe/types/applePayLineItem.dart';
-import 'package:appstitch_stripe/types/applePayOpts.dart';
-import 'package:appstitch_stripe/types/cardFormPaymentRequest.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -56,6 +50,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  /// TODO
+  // Appstitch
+  final String appstitchKey = "";
+  final String clientID = "";
+  final String blueprintID = "pro_tier"; // Optional
+  // Stripe
+  final String publishableKey = "";
+
+  final String merchantId = ""; // Required for Apple Pay only
+  final String androidPayMode = "test"; // Required for Android Pay only
+  final String priceID = ""; // Required to create a subscription only
+
+  ///
+
+  CreateCardOpts testCard =
+      CreateCardOpts(number: "4242424242424242", expMonth: 04, expYear: 2024);
+
   Customer customer;
   String customerID = "";
   String paymentMethodID = "";
@@ -66,33 +77,25 @@ class _MyHomePageState extends State<MyHomePage> {
   bool loading = false;
   bool allowNativePay = false;
 
-  CreateCardOpts testCard =
-      CreateCardOpts(number: "4242424242424242", expMonth: 04, expYear: 2024);
   AppstitchStripe stripe = AppstitchStripe();
 
   @override
   void initState() {
     super.initState();
-    final config = Options(
-        appStitchKey: "645ffc0f-cbc2-57f2-bb8c-dc7790b1208b",
-        clientID: "5fe15fe825eb49001517dd44");
+    final config = Options(appStitchKey: appstitchKey, clientID: clientID);
     core.initialize(config);
 
     AppstitchStripe.setOptions(StripeOptions(
-        publishableKey: "pk_test_b6RhyVTf8GURO4niBnDR1V6200WVfBxeqH",
-        merchantId: "merchant.uk.freshlygroundapps",
+        publishableKey: publishableKey,
+        merchantId: merchantId,
         androidPayMode: 'test'));
     core.setAuthToken("token");
 
     AppstitchStripe.deviceSupportsNativePay().then((value) {
       allowNativePay = true;
       setState(() {});
-    }, onError: (error) {
-      print(error);
     });
   }
-
-// UI
 
   void showMessage(String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -116,11 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _createCustomer() async {
     startSpinner();
     final customerOpts = CreateCustomerOpts(email: "test@example.com");
-    customerOpts.blueprintId = "qaz";
     final _customer = await stripe.createCustomer(customerOpts);
 
     setState(() {
-      customer = _customer;
       customerID = _customer.id;
     });
     stopSpinner();
@@ -138,14 +139,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Step 2 Attach card to customer
 
-    final _paymentMethod =
-        await stripe.attachPaymentMethod(paymentMethodResult.id, customerID);
-
-    // Step 3. Set payment method as default;
-
-    final updatedCustomer = await stripe
-        .updateCustomer(UpdateCustomerOpts(paymentMethod: _paymentMethod.id));
-
+    final _paymentMethod = await stripe.attachPaymentMethod(
+        AttachPaymentMethodOpts(
+            id: paymentMethodResult.id,
+            customer: customerID,
+            setDefault: true));
     setState(() {
       paymentMethodID = _paymentMethod.id;
     });
@@ -154,31 +152,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _createSubscription() async {
     startSpinner();
-    final subItems = [
-      SubscriptionItemOpts(price: "price_1IN28vG6VuHF9Dp26Wmj8IOu")
-    ];
+    final subItems = [SubscriptionItemOpts(price: priceID)];
     final subscriptionOpts =
         CreateSubscriptionOpts(customer: customerID, items: subItems);
 
     subscription = await stripe.createSubscription(subscriptionOpts);
 
-    print(subscription.toJson());
     if (subscription.object == "subscription") {
       setState(() {
         subscriptionID = subscription.id;
       });
       showMessage("Subscription Created!");
     } else {
-      showMessage("${subscription.stripeError}");
-      stopSpinner();
+      showMessage("${subscription.message}");
     }
+    stopSpinner();
   }
 
   void _createSubscriptionWithBlueprint() async {
     startSpinner();
     final subscriptionOpts = CreateSubscriptionOpts(customer: customerID);
 
-    subscriptionOpts.blueprintId = "pro_tier";
+    subscriptionOpts.blueprintId = blueprintID;
 
     subscription = await stripe.createSubscription(subscriptionOpts);
 
@@ -189,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       showMessage("Subscription Created");
     } else {
-      showMessage("${subscription.stripeError}");
+      showMessage("${subscription.message}");
     }
     stopSpinner();
   }
@@ -211,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       showMessage("Payment Intent Created");
     } else {
-      showMessage("${paymentIntent.stripeError}");
+      showMessage("${paymentIntent.message}");
     }
     stopSpinner();
   }
@@ -219,9 +214,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void _payWithNativePay() async {
     startSpinner();
 
+    // Set up Apple Pay options
     final applePayItems = [
       ApplePayLineItem(
-        label: 'Item Price',
+        label: 'Crypto (BTC)',
         amount: 25.toString(),
       ),
       ApplePayLineItem(
@@ -232,20 +228,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final applePayOpts =
         ApplePayOpts(items: applePayItems, currencyCode: "usd");
-    final result = await AppstitchStripe.paymentRequestWithNativePay(
-        androidPayOptions: AndroidPayOpts(
-            totalPrice: "25",
-            currencyCode: "usd",
-            lineItems: [
-              AndroidPayLineItem(totalPrice: "25", currencyCode: "usd")
-            ]),
-        applePayOptions: applePayOpts);
 
-    // setState(() {
-    //   paymentIntentID = paymentIntent.id;
-    // });
+    // Set up Android Pay Options
+    final androidPayOptions = AndroidPayOpts(
+        totalPrice: "25",
+        currencyCode: "usd",
+        lineItems: [AndroidPayLineItem(totalPrice: "25", currencyCode: "usd")]);
+
+    // Recieve token from Apple/Android Pay
+    final token = await AppstitchStripe.paymentRequestWithNativePay(
+        androidPayOptions: androidPayOptions, applePayOptions: applePayOpts);
+
+    // Cretea and confirm payment intent with token
+    final paymentIntentOpts = CreatePaymentIntentOpts(
+      currency: "usd",
+      amount: 2500,
+      confirm: true,
+      paymentMethodData: PaymentMethodData(
+          card: CreateCardOpts(token: token.tokenId), type: "card"),
+    );
+
+    final paymentIntent = await stripe.createPaymentIntent(paymentIntentOpts);
+
+    if (paymentIntent.object == "payment_intent") {
+      setState(() {
+        paymentIntentID = paymentIntent.id;
+      });
+
+      showMessage("Payment Intent Created");
+    } else {
+      showMessage("${paymentIntent.message}");
+    }
     stopSpinner();
-    showMessage("Payment Intent Created");
   }
 
   @override
@@ -261,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
                 padding: EdgeInsets.symmetric(vertical: 4.0),
                 child: Text(
-                  'Create a customer: ${customerID}',
+                  'Create a customer: $customerID',
                   style: Theme.of(context).textTheme.bodyText1,
                 )),
             ElevatedButton(
@@ -290,7 +304,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: _createSubscription,
               ),
               ElevatedButton(
-                child: Text("Premium membership"),
+                child: Text("Pro membership"),
                 onPressed: _createSubscriptionWithBlueprint,
               )
             ]),

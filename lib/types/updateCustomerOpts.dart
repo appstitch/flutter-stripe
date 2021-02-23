@@ -20,7 +20,7 @@ class UpdateCustomerOpts extends ConnectOptions {
     this.metadata,
     this.name,
     this.nextInvoiceSequence,
-    this.paymentMethod,
+    this.defaultSource,
     this.phone,
     this.preferredLocals,
     this.promotionCode,
@@ -36,7 +36,7 @@ class UpdateCustomerOpts extends ConnectOptions {
   Map<String, dynamic> metadata;
   String name;
   int nextInvoiceSequence;
-  String paymentMethod;
+  String defaultSource;
   String phone;
   List<String> preferredLocals;
   String promotionCode;

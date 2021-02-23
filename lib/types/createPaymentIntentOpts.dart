@@ -1,5 +1,6 @@
 library appstitch_stripe;
 
+import 'package:appstitch_stripe/types.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:appstitch_stripe/types/connectOptions.dart';
 import 'package:appstitch_stripe/types/transferData.dart';
@@ -26,11 +27,13 @@ class CreatePaymentIntentOpts extends ConnectOptions {
     this.onBehalfOf,
     this.paymentMethod,
     this.paymentMethodTypes,
+    this.paymentMethodData,
     this.receiptEmail,
     this.statementDescriptor,
     this.statementDescriptorSuffix,
     this.transferData,
     this.transferGroup,
+    this.card,
   });
 
   int amount;
@@ -47,12 +50,14 @@ class CreatePaymentIntentOpts extends ConnectOptions {
   bool offSession;
   String onBehalfOf;
   String paymentMethod;
+  PaymentMethodData paymentMethodData;
   List<String> paymentMethodTypes;
   String receiptEmail;
   String statementDescriptor;
   String statementDescriptorSuffix;
   TransferData transferData;
   String transferGroup;
+  CreateCardOpts card;
 
   factory CreatePaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$CreatePaymentIntentOptsFromJson(json);

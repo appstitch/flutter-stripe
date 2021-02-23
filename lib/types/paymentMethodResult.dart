@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'address.dart';
 import 'createCardOpts.dart';
 
 part 'paymentMethodResult.g.dart';

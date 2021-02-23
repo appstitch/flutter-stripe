@@ -1,6 +1,6 @@
 name: appstitch_stripe
-description: Appstitch client library for Stripe integrations.
-version: 1.0.3
+description: Stripe Integrations using Appstitch.
+version: 1.0.4
 homepage: https://appstitch.dev
 
 environment:

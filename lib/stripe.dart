@@ -1,15 +1,7 @@
 library appstitch_stripe;
 
 import 'dart:io';
-
-import 'package:appstitch_stripe/types/androidPayOpts.dart';
-import 'package:appstitch_stripe/types/applePayOpts.dart';
-import 'package:appstitch_stripe/types/attachPaymentMethodOpts.dart';
-import 'package:appstitch_stripe/types/cardFormPaymentRequest.dart';
-import 'package:appstitch_stripe/types/createSourceOpts.dart';
-import 'package:appstitch_stripe/types/paymentMethodResult.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:appstitch_core/core.dart';
 import 'package:appstitch_stripe/types.dart';
 import 'package:flutter/services.dart';
@@ -21,9 +13,9 @@ class AppstitchStripe {
     return base.toJson();
   }
 
-  Future<PaymentMethod> attachPaymentMethod(String id, String customer) async {
-    final payload =
-        AttachPaymentMethodOpts(id: id, customer: customer).toJson();
+  Future<PaymentMethod> attachPaymentMethod(
+      AttachPaymentMethodOpts opts) async {
+    final payload = opts.toJson();
 
     final result = await core.makeRequst("Stripe/attachPaymentMethod", payload);
 
