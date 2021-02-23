@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Stripe Sample'),
+      home: MyHomePage(title: 'Stripe Example'),
     );
   }
 }
@@ -82,8 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    final config = Options(appStitchKey: appstitchKey, clientID: clientID);
-    core.initialize(config);
+    final options = Options(appStitchKey: appstitchKey, clientID: clientID);
+    core.initialize(options);
 
     AppstitchStripe.setOptions(StripeOptions(
         publishableKey: publishableKey,
@@ -152,9 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _createSubscription() async {
     startSpinner();
-    final subItems = [SubscriptionItemOpts(price: priceID)];
+    final subscriptionItems = [SubscriptionItemOpts(price: priceID)];
     final subscriptionOpts =
-        CreateSubscriptionOpts(customer: customerID, items: subItems);
+        CreateSubscriptionOpts(customer: customerID, items: subscriptionItems);
 
     subscription = await stripe.createSubscription(subscriptionOpts);
 
