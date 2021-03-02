@@ -2,6 +2,11 @@
 
 Serverless Stripe Integrations for Appstitch
 
+## Platforms
+
+- iOS
+- Android
+
 ## Usage
 
 ### Create a customer
@@ -106,3 +111,5 @@ void initState() {
 The foundations for this library is from [flutter_stripe_payment](https://github.com/jonasbark/flutter_stripe_payment) and [tipsi-stripe](https://github.com/tipsi/tipsi-stripe)
 
 Create a free Appstitch account [here](https://connect.appstitch.dev)
+
+View [walkthrough](https://appstitch.medium.com/flutter-how-to-integrate-stripe-using-appstitch-811990d0cd03) here
