@@ -10,8 +10,8 @@ class TransferData {
     this.transferPercent,
   });
 
-  String destination;
-  int transferPercent;
+  String? destination;
+  int? transferPercent;
 
   factory TransferData.fromJson(Map<String, dynamic> json) =>
       _$TransferDataFromJson(json);

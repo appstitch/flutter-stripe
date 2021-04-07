@@ -26,21 +26,21 @@ class UpdateCustomerOpts extends ConnectOptions {
     this.promotionCode,
     this.source,
   });
-  Address address;
-  int balance;
-  String coupon;
-  String description;
-  String email;
-  String id;
-  String invoicePrefix;
-  Map<String, dynamic> metadata;
-  String name;
-  int nextInvoiceSequence;
-  String defaultSource;
-  String phone;
-  List<String> preferredLocals;
-  String promotionCode;
-  String source;
+  Address? address;
+  int? balance;
+  String? coupon;
+  String? description;
+  String? email;
+  String? id;
+  String? invoicePrefix;
+  Map<String, dynamic>? metadata;
+  String? name;
+  int? nextInvoiceSequence;
+  String? defaultSource;
+  String? phone;
+  List<String>? preferredLocals;
+  String? promotionCode;
+  String? source;
 
   factory UpdateCustomerOpts.fromJson(Map<String, dynamic> json) =>
       _$UpdateCustomerOptsFromJson(json);

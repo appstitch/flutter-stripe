@@ -16,12 +16,12 @@ class CapturePaymentIntentOpts extends ConnectOptions {
     this.transferData,
   });
 
-  int amountToCapture;
-  int applicationFeeAmount;
-  String id;
-  String statementDescriptor;
-  String statementDescriptorSuffix;
-  TransferData transferData;
+  int? amountToCapture;
+  int? applicationFeeAmount;
+  String? id;
+  String? statementDescriptor;
+  String? statementDescriptorSuffix;
+  TransferData? transferData;
 
   factory CapturePaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$CapturePaymentIntentOptsFromJson(json);

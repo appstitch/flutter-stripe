@@ -13,8 +13,8 @@ class CreatePaymentMethodOpts extends ConnectOptions {
     // this.token,
     // this.metadata,
   });
-  Address billingAddress;
-  CreateCardOpts card;
+  Address? billingAddress;
+  CreateCardOpts? card;
   // Token token;
   // Map<String, String> metadata;
 

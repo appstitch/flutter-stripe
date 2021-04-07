@@ -80,18 +80,24 @@ Best Practice : Start with very broad blueprints and refine them as you go.
 
 ---
 
+Update `Podfile` platform
+
+```
+platform :ios, '10.0'
+```
+
 ### Install
 
 ```
-appstitch_core:   ^1.0.0
-appstitch_stripe: ^1.0.4
+appstitch_core: ^2.0.1-nullsafety.1
+appstitch_stripe: ^2.0.1-nullsafety.1
 ```
 
 ### Initialize
 
 ```
-import 'package:appstitch_core/options.dart';
 import 'package:appstitch_core/core.dart';
+import 'package:appstitch_stripe/stripe.dart';
 
 
 Core core = Core();

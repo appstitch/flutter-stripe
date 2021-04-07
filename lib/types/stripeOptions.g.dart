@@ -8,9 +8,9 @@ part of 'stripeOptions.dart';
 
 StripeOptions _$StripeOptionsFromJson(Map<String, dynamic> json) {
   return StripeOptions(
-    publishableKey: json['publishable_key'] as String,
-    merchantId: json['merchant_id'] as String,
-    androidPayMode: json['android_pay_mode'] as String,
+    publishableKey: json['publishable_key'] as String?,
+    merchantId: json['merchant_id'] as String?,
+    androidPayMode: json['android_pay_mode'] as String?,
   );
 }
 

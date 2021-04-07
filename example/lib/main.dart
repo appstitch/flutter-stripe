@@ -1,6 +1,4 @@
-import 'package:appstitch_core/options.dart';
 import 'package:appstitch_core/core.dart';
-import 'package:appstitch_stripe/types.dart';
 import 'package:appstitch_stripe/stripe.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // Appstitch
   final String appstitchKey = "";
   final String clientID = "";
+
   final String blueprintID = "pro_tier"; // Optional
   // Stripe
   final String publishableKey = "";

@@ -8,30 +8,31 @@ part of 'invoiceItem.dart';
 
 InvoiceItem _$InvoiceItemFromJson(Map<String, dynamic> json) {
   return InvoiceItem(
-    amount: json['amount'] as int,
-    currency: json['currency'] as String,
-    customer: json['customer'] as String,
-    date: json['date'] as int,
-    description: json['description'] as String,
-    id: json['id'] as String,
-    invoice: json['invoice'] as String,
-    livemode: json['livemode'] as bool,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    object: json['object'] as String,
+    amount: json['amount'] as int?,
+    currency: json['currency'] as String?,
+    customer: json['customer'] as String?,
+    date: json['date'] as int?,
+    description: json['description'] as String?,
+    id: json['id'] as String?,
+    invoice: json['invoice'] as String?,
+    livemode: json['livemode'] as bool?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    object: json['object'] as String?,
     price: json['price'] == null
         ? null
         : Price.fromJson(json['price'] as Map<String, dynamic>),
-    proration: json['proration'] as bool,
-    quantity: json['quantity'] as int,
-    subscription: json['subscription'] as String,
-    taxRates: (json['tax_rates'] as List)?.map((e) => e as String)?.toList(),
-    unitAmount: json['unit_amount'] as int,
-    unitAmountDecimal: json['unit_amount_decimal'] as String,
+    proration: json['proration'] as bool?,
+    quantity: json['quantity'] as int?,
+    subscription: json['subscription'] as String?,
+    taxRates:
+        (json['tax_rates'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    unitAmount: json['unit_amount'] as int?,
+    unitAmountDecimal: json['unit_amount_decimal'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?;
 }
 
 Map<String, dynamic> _$InvoiceItemToJson(InvoiceItem instance) {

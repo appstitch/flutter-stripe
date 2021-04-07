@@ -1,22 +1,22 @@
 class CreateCardOpts {
-  String addressCity;
-  String addressCountry;
-  String addressLine1;
-  String addressLine2;
-  String addressState;
-  String addressZip;
-  String brand;
-  String cardId;
-  String country;
-  String currency;
-  int expMonth;
-  int expYear;
-  String funding;
-  String last4;
-  String name;
-  String number;
-  String cvc;
-  String token;
+  String? addressCity;
+  String? addressCountry;
+  String? addressLine1;
+  String? addressLine2;
+  String? addressState;
+  String? addressZip;
+  String? brand;
+  String? cardId;
+  String? country;
+  String? currency;
+  int? expMonth;
+  int? expYear;
+  String? funding;
+  String? last4;
+  String? name;
+  String? number;
+  String? cvc;
+  String? token;
 
   CreateCardOpts(
       {this.addressCity,

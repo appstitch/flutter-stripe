@@ -36,28 +36,28 @@ class CreatePaymentIntentOpts extends ConnectOptions {
     this.card,
   });
 
-  int amount;
-  int applicationFeeAmount;
-  Method captureMethod;
-  bool confirm;
-  Method confirmationMethod;
-  String currency;
-  String customer;
-  String description;
-  bool errorOnRequiresAction;
-  String mandate;
-  Map<String, dynamic> metadata;
-  bool offSession;
-  String onBehalfOf;
-  String paymentMethod;
-  PaymentMethodData paymentMethodData;
-  List<String> paymentMethodTypes;
-  String receiptEmail;
-  String statementDescriptor;
-  String statementDescriptorSuffix;
-  TransferData transferData;
-  String transferGroup;
-  CreateCardOpts card;
+  int? amount;
+  int? applicationFeeAmount;
+  Method? captureMethod;
+  bool? confirm;
+  Method? confirmationMethod;
+  String? currency;
+  String? customer;
+  String? description;
+  bool? errorOnRequiresAction;
+  String? mandate;
+  Map<String, dynamic>? metadata;
+  bool? offSession;
+  String? onBehalfOf;
+  String? paymentMethod;
+  PaymentMethodData? paymentMethodData;
+  List<String>? paymentMethodTypes;
+  String? receiptEmail;
+  String? statementDescriptor;
+  String? statementDescriptorSuffix;
+  TransferData? transferData;
+  String? transferGroup;
+  CreateCardOpts? card;
 
   factory CreatePaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$CreatePaymentIntentOptsFromJson(json);

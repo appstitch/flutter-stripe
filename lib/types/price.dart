@@ -15,12 +15,12 @@ class Price extends ConnectOptions {
     this.unitAmount,
   });
 
-  bool active;
-  String currency;
-  String id;
-  Map<String, dynamic> metadata;
-  String product;
-  int unitAmount;
+  bool? active;
+  String? currency;
+  String? id;
+  Map<String, dynamic>? metadata;
+  String? product;
+  int? unitAmount;
 
   factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
   Map<String, dynamic> toJson() => _$PriceToJson(this);

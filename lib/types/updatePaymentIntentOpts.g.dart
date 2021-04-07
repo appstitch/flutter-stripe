@@ -9,33 +9,33 @@ part of 'updatePaymentIntentOpts.dart';
 UpdatePaymentIntentOpts _$UpdatePaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return UpdatePaymentIntentOpts(
-    amount: json['amount'] as int,
-    applicationFeeAmount: json['application_fee_amount'] as int,
-    currency: json['currency'] as String,
-    customer: json['customer'] as String,
-    description: json['description'] as String,
-    errorOnRequiresAction: json['error_on_requires_action'] as bool,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    offSession: json['off_session'] as bool,
-    paymentMethod: json['payment_method'] as String,
-    paymentMethodTypes: (json['payment_method_types'] as List)
+    amount: json['amount'] as int?,
+    applicationFeeAmount: json['application_fee_amount'] as int?,
+    currency: json['currency'] as String?,
+    customer: json['customer'] as String?,
+    description: json['description'] as String?,
+    errorOnRequiresAction: json['error_on_requires_action'] as bool?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    offSession: json['off_session'] as bool?,
+    paymentMethod: json['payment_method'] as String?,
+    paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
         ?.map((e) => e as String)
-        ?.toList(),
-    receiptEmail: json['receipt_email'] as String,
-    statementDescriptor: json['statement_descriptor'] as String,
-    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+        .toList(),
+    receiptEmail: json['receipt_email'] as String?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
     transferData: json['transfer_data'] == null
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
-    transferGroup: json['transfer_group'] as String,
+    transferGroup: json['transfer_group'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$UpdatePaymentIntentOptsToJson(

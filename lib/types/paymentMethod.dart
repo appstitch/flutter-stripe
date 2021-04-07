@@ -10,11 +10,11 @@ part 'paymentMethod.g.dart';
 class PaymentMethod extends ConnectOptions {
   PaymentMethod({this.customer, this.id, this.created, this.metadata, type});
 
-  String customer;
-  String id;
-  Address billingDetails;
-  int created;
-  Map<String, dynamic> metadata;
+  String? customer;
+  String? id;
+  Address? billingDetails;
+  int? created;
+  Map<String, dynamic>? metadata;
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) =>
       _$PaymentMethodFromJson(json);

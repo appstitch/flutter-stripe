@@ -9,25 +9,25 @@ part of 'confirmPaymentIntentOpts.dart';
 ConfirmPaymentIntentOpts _$ConfirmPaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return ConfirmPaymentIntentOpts(
-    id: json['id'] as String,
-    errorOnRequiresAction: json['error_on_requires_action'] as bool,
-    mandate: json['mandate'] as String,
-    offSession: json['off_session'] as bool,
-    onBehalfOf: json['on_behalf_of'] as String,
-    paymentMethod: json['payment_method'] as String,
-    paymentMethodTypes: (json['payment_method_types'] as List)
+    id: json['id'] as String?,
+    errorOnRequiresAction: json['error_on_requires_action'] as bool?,
+    mandate: json['mandate'] as String?,
+    offSession: json['off_session'] as bool?,
+    onBehalfOf: json['on_behalf_of'] as String?,
+    paymentMethod: json['payment_method'] as String?,
+    paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
         ?.map((e) => e as String)
-        ?.toList(),
-    receiptEmail: json['receipt_email'] as String,
-    statementDescriptor: json['statement_descriptor'] as String,
-    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+        .toList(),
+    receiptEmail: json['receipt_email'] as String?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$ConfirmPaymentIntentOptsToJson(

@@ -27,23 +27,23 @@ class InvoiceItem extends Base {
     this.unitAmountDecimal,
   });
 
-  int amount;
-  String currency;
-  String customer;
-  int date;
-  String description;
-  String id;
-  String invoice;
-  bool livemode;
-  Map<String, dynamic> metadata;
-  String object;
-  Price price;
-  bool proration;
-  int quantity;
-  String subscription;
-  List<String> taxRates;
-  int unitAmount;
-  String unitAmountDecimal;
+  int? amount;
+  String? currency;
+  String? customer;
+  int? date;
+  String? description;
+  String? id;
+  String? invoice;
+  bool? livemode;
+  Map<String, dynamic>? metadata;
+  String? object;
+  Price? price;
+  bool? proration;
+  int? quantity;
+  String? subscription;
+  List<String>? taxRates;
+  int? unitAmount;
+  String? unitAmountDecimal;
 
   factory InvoiceItem.fromJson(Map<String, dynamic> json) =>
       _$InvoiceItemFromJson(json);

@@ -13,13 +13,13 @@ enum ShippingType { shipping, delivery, store_pickup, service_pickup }
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class ApplePayOpts {
-  List<RequiredBillingAddressFields> requiredBillingAddressFields;
-  List<RequiredShippingAddressFields> requiredShippingAddressFields;
-  List<ShippingMethod> shippingMethod;
-  String currencyCode;
-  String countryCode;
-  ShippingType shippingType;
-  List<ApplePayLineItem> items;
+  List<RequiredBillingAddressFields?>? requiredBillingAddressFields;
+  List<RequiredShippingAddressFields?>? requiredShippingAddressFields;
+  List<ShippingMethod>? shippingMethod;
+  String? currencyCode;
+  String? countryCode;
+  ShippingType? shippingType;
+  List<ApplePayLineItem>? items;
 
   ApplePayOpts(
       {this.requiredBillingAddressFields,

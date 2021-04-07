@@ -5,10 +5,10 @@ part 'token.g.dart';
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class Token {
-  CreateCardOpts card;
-  double created;
-  bool livemode;
-  String tokenId;
+  CreateCardOpts? card;
+  double? created;
+  bool? livemode;
+  String? tokenId;
 
   Token({this.card, this.created, this.livemode, this.tokenId});
 

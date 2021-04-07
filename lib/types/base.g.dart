@@ -8,13 +8,13 @@ part of 'base.dart';
 
 Base _$BaseFromJson(Map<String, dynamic> json) {
   return Base(
-    blueprintId: json['blueprintId'] as String,
+    blueprintId: json['blueprintId'] as String?,
   )
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$BaseToJson(Base instance) {

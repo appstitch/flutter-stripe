@@ -8,19 +8,19 @@ part of 'price.dart';
 
 Price _$PriceFromJson(Map<String, dynamic> json) {
   return Price(
-    active: json['active'] as bool,
-    currency: json['currency'] as String,
-    id: json['id'] as String,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    product: json['product'] as String,
-    unitAmount: json['unit_amount'] as int,
+    active: json['active'] as bool?,
+    currency: json['currency'] as String?,
+    id: json['id'] as String?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    product: json['product'] as String?,
+    unitAmount: json['unit_amount'] as int?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$PriceToJson(Price instance) {

@@ -16,8 +16,8 @@ class SubscriptionItem extends Base {
   });
 
   // Plan plan;
-  Price price;
-  int quantity;
+  Price? price;
+  int? quantity;
 
   factory SubscriptionItem.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionItemFromJson(json);

@@ -34,24 +34,24 @@ class Subscription extends ConnectOptions {
     this.transferData,
   });
 
-  bool cancelAtPeriodEnd;
-  int currentPeriodEnd;
-  int currentPeriodStart;
-  String customer;
-  int daysUntilDue;
-  String defaultPaymentMethod;
-  String defaultSource;
-  String description;
-  String id;
-  String invoice;
-  SubscriptionItemList items;
+  bool? cancelAtPeriodEnd;
+  int? currentPeriodEnd;
+  int? currentPeriodStart;
+  String? customer;
+  int? daysUntilDue;
+  String? defaultPaymentMethod;
+  String? defaultSource;
+  String? description;
+  String? id;
+  String? invoice;
+  SubscriptionItemList? items;
 
-  Map<String, dynamic> metadata;
-  String object;
+  Map<String, dynamic>? metadata;
+  String? object;
   // Plan plan;
   // String price;
-  String subscriptionName;
-  TransferData transferData;
+  String? subscriptionName;
+  TransferData? transferData;
 
   factory Subscription.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionFromJson(json);

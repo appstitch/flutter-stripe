@@ -12,7 +12,7 @@ class RetrieveOpts extends ConnectOptions {
     this.id,
   });
 
-  String id;
+  String? id;
 
   factory RetrieveOpts.fromJson(Map<String, dynamic> json) =>
       _$RetrieveOptsFromJson(json);

@@ -9,21 +9,21 @@ part of 'capturePaymentIntentOpts.dart';
 CapturePaymentIntentOpts _$CapturePaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return CapturePaymentIntentOpts(
-    amountToCapture: json['amount_to_capture'] as int,
-    applicationFeeAmount: json['application_fee_amount'] as int,
-    id: json['id'] as String,
-    statementDescriptor: json['statement_descriptor'] as String,
-    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+    amountToCapture: json['amount_to_capture'] as int?,
+    applicationFeeAmount: json['application_fee_amount'] as int?,
+    id: json['id'] as String?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
     transferData: json['transfer_data'] == null
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$CapturePaymentIntentOptsToJson(

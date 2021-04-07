@@ -5,9 +5,9 @@ part 'applePayLineItem.g.dart';
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class ApplePayLineItem {
-  String label;
-  String amount;
-  String type;
+  String? label;
+  String? amount;
+  String? type;
   ApplePayLineItem({this.label, this.amount, this.type});
 
   factory ApplePayLineItem.fromJson(Map<String, dynamic> json) =>

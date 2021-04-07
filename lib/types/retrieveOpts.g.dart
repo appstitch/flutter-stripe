@@ -8,14 +8,14 @@ part of appstitch_stripe;
 
 RetrieveOpts _$RetrieveOptsFromJson(Map<String, dynamic> json) {
   return RetrieveOpts(
-    id: json['id'] as String,
+    id: json['id'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$RetrieveOptsToJson(RetrieveOpts instance) {

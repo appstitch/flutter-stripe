@@ -20,20 +20,20 @@ class Source extends Base {
       this.statementDescriptor,
       this.status,
       this.usage});
-  String object;
-  num amount;
-  String clientSecret;
-  num created;
-  String currency;
-  String flow;
-  String sourceId;
-  bool livemode;
-  Map<String, dynamic> metadata;
+  String? object;
+  num? amount;
+  String? clientSecret;
+  num? created;
+  String? currency;
+  String? flow;
+  String? sourceId;
+  bool? livemode;
+  Map<String, dynamic>? metadata;
   // Owner owner;
-  String statementDescriptor;
-  String status;
-  String usage;
-  String id;
+  String? statementDescriptor;
+  String? status;
+  String? usage;
+  String? id;
 
   factory Source.fromJson(Map<String, dynamic> json) => _$SourceFromJson(json);
   Map<String, dynamic> toJson() => _$SourceToJson(this);

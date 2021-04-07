@@ -9,29 +9,25 @@ part of 'applePayOpts.dart';
 ApplePayOpts _$ApplePayOptsFromJson(Map<String, dynamic> json) {
   return ApplePayOpts(
     requiredBillingAddressFields:
-        (json['required_billing_address_fields'] as List)
+        (json['required_billing_address_fields'] as List<dynamic>?)
             ?.map((e) =>
                 _$enumDecodeNullable(_$RequiredBillingAddressFieldsEnumMap, e))
-            ?.toList(),
+            .toList(),
     requiredShippingAddressFields:
-        (json['required_shipping_address_fields'] as List)
+        (json['required_shipping_address_fields'] as List<dynamic>?)
             ?.map((e) =>
                 _$enumDecodeNullable(_$RequiredShippingAddressFieldsEnumMap, e))
-            ?.toList(),
-    shippingMethod: (json['shipping_method'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ShippingMethod.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    currencyCode: json['currency_code'] as String,
-    countryCode: json['country_code'] as String,
+            .toList(),
+    shippingMethod: (json['shipping_method'] as List<dynamic>?)
+        ?.map((e) => ShippingMethod.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    currencyCode: json['currency_code'] as String?,
+    countryCode: json['country_code'] as String?,
     shippingType:
         _$enumDecodeNullable(_$ShippingTypeEnumMap, json['shipping_type']),
-    items: (json['items'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ApplePayLineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    items: (json['items'] as List<dynamic>?)
+        ?.map((e) => ApplePayLineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -48,51 +44,56 @@ Map<String, dynamic> _$ApplePayOptsToJson(ApplePayOpts instance) {
       'required_billing_address_fields',
       instance.requiredBillingAddressFields
           ?.map((e) => _$RequiredBillingAddressFieldsEnumMap[e])
-          ?.toList());
+          .toList());
   writeNotNull(
       'required_shipping_address_fields',
       instance.requiredShippingAddressFields
           ?.map((e) => _$RequiredShippingAddressFieldsEnumMap[e])
-          ?.toList());
+          .toList());
   writeNotNull('shipping_method',
-      instance.shippingMethod?.map((e) => e?.toJson())?.toList());
+      instance.shippingMethod?.map((e) => e.toJson()).toList());
   writeNotNull('currency_code', instance.currencyCode);
   writeNotNull('country_code', instance.countryCode);
   writeNotNull('shipping_type', _$ShippingTypeEnumMap[instance.shippingType]);
-  writeNotNull('items', instance.items?.map((e) => e?.toJson())?.toList());
+  writeNotNull('items', instance.items?.map((e) => e.toJson()).toList());
   return val;
 }
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$RequiredBillingAddressFieldsEnumMap = {

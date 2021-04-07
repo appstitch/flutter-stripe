@@ -8,8 +8,8 @@ part of 'transferData.dart';
 
 TransferData _$TransferDataFromJson(Map<String, dynamic> json) {
   return TransferData(
-    destination: json['destination'] as String,
-    transferPercent: json['transfer_percent'] as int,
+    destination: json['destination'] as String?,
+    transferPercent: json['transfer_percent'] as int?,
   );
 }
 

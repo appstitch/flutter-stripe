@@ -11,7 +11,7 @@ PaymentMethodData _$PaymentMethodDataFromJson(Map<String, dynamic> json) {
     card: json['card'] == null
         ? null
         : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
-    type: json['type'] as String,
+    type: json['type'] as String?,
   );
 }
 

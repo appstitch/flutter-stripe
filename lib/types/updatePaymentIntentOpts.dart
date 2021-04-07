@@ -25,22 +25,22 @@ class UpdatePaymentIntentOpts extends ConnectOptions {
     this.transferGroup,
   });
 
-  int amount;
-  int applicationFeeAmount;
-  String currency;
-  String customer;
-  String description;
-  bool errorOnRequiresAction;
-  Map<String, dynamic> metadata;
-  bool offSession;
-  String paymentMethod;
-  List<String> paymentMethodTypes;
-  String receiptEmail;
+  int? amount;
+  int? applicationFeeAmount;
+  String? currency;
+  String? customer;
+  String? description;
+  bool? errorOnRequiresAction;
+  Map<String, dynamic>? metadata;
+  bool? offSession;
+  String? paymentMethod;
+  List<String>? paymentMethodTypes;
+  String? receiptEmail;
 
-  String statementDescriptor;
-  String statementDescriptorSuffix;
-  TransferData transferData;
-  String transferGroup;
+  String? statementDescriptor;
+  String? statementDescriptorSuffix;
+  TransferData? transferData;
+  String? transferGroup;
 
   factory UpdatePaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$UpdatePaymentIntentOptsFromJson(json);

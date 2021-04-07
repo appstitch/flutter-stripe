@@ -16,15 +16,15 @@ class BankAccount extends Source {
       this.last4,
       this.routingNumber});
 
-  String accountHolderName;
-  String accountHolderType;
-  String accountNumber;
-  String bankName;
-  String countryCode;
-  String currency;
-  String fingerprint;
-  String last4;
-  String routingNumber;
+  String? accountHolderName;
+  String? accountHolderType;
+  String? accountNumber;
+  String? bankName;
+  String? countryCode;
+  String? currency;
+  String? fingerprint;
+  String? last4;
+  String? routingNumber;
 
   factory BankAccount.fromJson(Map<String, dynamic> json) =>
       _$BankAccountFromJson(json);

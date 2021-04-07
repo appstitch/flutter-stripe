@@ -11,28 +11,29 @@ CreateCustomerOpts _$CreateCustomerOptsFromJson(Map<String, dynamic> json) {
     address: json['address'] == null
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
-    balance: json['balance'] as int,
-    coupon: json['coupon'] as String,
-    description: json['description'] as String,
-    email: json['email'] as String,
-    invoicePrefix: json['invoice_prefix'] as String,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    name: json['name'] as String,
-    nextInvoiceSequence: json['next_invoice_sequence'] as int,
-    paymentMethod: json['payment_method'] as String,
-    phone: json['phone'] as String,
-    preferredLocals:
-        (json['preferred_locals'] as List)?.map((e) => e as String)?.toList(),
-    promotionCode: json['promotion_code'] as String,
-    source: json['source'] as String,
+    balance: json['balance'] as int?,
+    coupon: json['coupon'] as String?,
+    description: json['description'] as String?,
+    email: json['email'] as String?,
+    invoicePrefix: json['invoice_prefix'] as String?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    name: json['name'] as String?,
+    nextInvoiceSequence: json['next_invoice_sequence'] as int?,
+    paymentMethod: json['payment_method'] as String?,
+    phone: json['phone'] as String?,
+    preferredLocals: (json['preferred_locals'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    promotionCode: json['promotion_code'] as String?,
+    source: json['source'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$CreateCustomerOptsToJson(CreateCustomerOpts instance) {

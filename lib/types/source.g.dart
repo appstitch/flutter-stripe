@@ -8,24 +8,24 @@ part of 'source.dart';
 
 Source _$SourceFromJson(Map<String, dynamic> json) {
   return Source(
-    id: json['id'] as String,
-    amount: json['amount'] as num,
-    clientSecret: json['client_secret'] as String,
-    created: json['created'] as num,
-    currency: json['currency'] as String,
-    flow: json['flow'] as String,
-    sourceId: json['source_id'] as String,
-    livemode: json['livemode'] as bool,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    statementDescriptor: json['statement_descriptor'] as String,
-    status: json['status'] as String,
-    usage: json['usage'] as String,
+    id: json['id'] as String?,
+    amount: json['amount'] as num?,
+    clientSecret: json['client_secret'] as String?,
+    created: json['created'] as num?,
+    currency: json['currency'] as String?,
+    flow: json['flow'] as String?,
+    sourceId: json['source_id'] as String?,
+    livemode: json['livemode'] as bool?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    status: json['status'] as String?,
+    usage: json['usage'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$SourceToJson(Source instance) {

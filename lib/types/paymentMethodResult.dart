@@ -8,9 +8,9 @@ part 'paymentMethodResult.g.dart';
 class PaymentMethodResult {
   PaymentMethodResult({this.id, this.card, this.created});
 
-  String id;
-  int created;
-  CreateCardOpts card;
+  String? id;
+  int? created;
+  CreateCardOpts? card;
 
   factory PaymentMethodResult.fromJson(Map<dynamic, dynamic> json) {
     return PaymentMethodResult(

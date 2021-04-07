@@ -1,24 +1,25 @@
 name: appstitch_stripe
 description: Stripe Integrations for Appstitch.
-version: 1.0.4
+version: 2.0.1-nullsafety.1
 homepage: https://appstitch.dev
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  appstitch_core: ^1.0.0
-  json_annotation: ^3.1.1
+  appstitch_core: ^2.0.0-nullsafety.1
+  json_annotation: ^4.0.0
+  collection: ^1.15.0-nullsafety.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   build_runner: ^1.11.0
-  json_serializable: ^3.5.1
+  json_serializable: ^4.0.0
 
 flutter:
   plugin:

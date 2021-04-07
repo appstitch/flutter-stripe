@@ -8,12 +8,10 @@ part of appstitch_stripe;
 
 SubscriptionItemList _$SubscriptionItemListFromJson(Map<String, dynamic> json) {
   return SubscriptionItemList(
-    object: json['object'] as String,
-    data: (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : SubscriptionItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    object: json['object'] as String?,
+    data: (json['data'] as List<dynamic>?)
+        ?.map((e) => SubscriptionItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -28,6 +26,6 @@ Map<String, dynamic> _$SubscriptionItemListToJson(
   }
 
   writeNotNull('object', instance.object);
-  writeNotNull('data', instance.data?.map((e) => e?.toJson())?.toList());
+  writeNotNull('data', instance.data?.map((e) => e.toJson()).toList());
   return val;
 }

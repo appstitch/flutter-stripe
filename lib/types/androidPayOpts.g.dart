@@ -8,17 +8,16 @@ part of 'androidPayOpts.dart';
 
 AndroidPayOpts _$AndroidPayOptsFromJson(Map<String, dynamic> json) {
   return AndroidPayOpts(
-    billingAddressRequired: json['billing_address_required'] as bool,
-    currencyCode: json['currency_code'] as String,
-    lineItems: (json['line_items'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AndroidPayLineItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    shippingAddressRequired: json['shipping_address_required'] as bool,
-    shippingCountries:
-        (json['shipping_countries'] as List)?.map((e) => e as String)?.toList(),
-    totalPrice: json['total_price'] as String,
+    billingAddressRequired: json['billing_address_required'] as bool?,
+    currencyCode: json['currency_code'] as String?,
+    lineItems: (json['line_items'] as List<dynamic>?)
+        ?.map((e) => AndroidPayLineItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    shippingAddressRequired: json['shipping_address_required'] as bool?,
+    shippingCountries: (json['shipping_countries'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    totalPrice: json['total_price'] as String?,
   );
 }
 
@@ -34,7 +33,7 @@ Map<String, dynamic> _$AndroidPayOptsToJson(AndroidPayOpts instance) {
   writeNotNull('billing_address_required', instance.billingAddressRequired);
   writeNotNull('currency_code', instance.currencyCode);
   writeNotNull(
-      'line_items', instance.lineItems?.map((e) => e?.toJson())?.toList());
+      'line_items', instance.lineItems?.map((e) => e.toJson()).toList());
   writeNotNull('shipping_address_required', instance.shippingAddressRequired);
   writeNotNull('shipping_countries', instance.shippingCountries);
   writeNotNull('total_price', instance.totalPrice);

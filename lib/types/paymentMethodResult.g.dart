@@ -8,11 +8,11 @@ part of 'paymentMethodResult.dart';
 
 PaymentMethodResult _$PaymentMethodResultFromJson(Map<String, dynamic> json) {
   return PaymentMethodResult(
-    id: json['id'] as String,
+    id: json['id'] as String?,
     card: json['card'] == null
         ? null
         : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
-    created: json['created'] as int,
+    created: json['created'] as int?,
   );
 }
 

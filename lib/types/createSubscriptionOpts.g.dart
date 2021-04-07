@@ -9,50 +9,48 @@ part of appstitch_stripe;
 CreateSubscriptionOpts _$CreateSubscriptionOptsFromJson(
     Map<String, dynamic> json) {
   return CreateSubscriptionOpts(
-    active: json['active'] as bool,
-    addInvoiceItems: (json['add_invoice_items'] as List)
+    active: json['active'] as bool?,
+    addInvoiceItems: (json['add_invoice_items'] as List<dynamic>?)
         ?.map((e) => e as Map<String, dynamic>)
-        ?.toList(),
-    amount: json['amount'] as int,
-    applicationFeePercent: json['application_fee_percent'] as int,
-    backdateStartSate: json['backdate_start_sate'] as int,
-    billingCycleAnchor: json['billing_cycle_anchor'] as int,
+        .toList(),
+    amount: json['amount'] as int?,
+    applicationFeePercent: json['application_fee_percent'] as int?,
+    backdateStartSate: json['backdate_start_sate'] as int?,
+    billingCycleAnchor: json['billing_cycle_anchor'] as int?,
     billingThresholds: json['billing_thresholds'] == null
         ? null
         : BillingThresholdsOpts.fromJson(
             json['billing_thresholds'] as Map<String, dynamic>),
-    cancelAt: json['cancel_at'] as int,
-    cancelAtPeriodEnd: json['cancel_at_period_end'] as bool,
+    cancelAt: json['cancel_at'] as int?,
+    cancelAtPeriodEnd: json['cancel_at_period_end'] as bool?,
     collectionMethod:
         _$enumDecodeNullable(_$MethodEnumMap, json['collection_method']),
-    coupon: json['coupon'] as String,
-    currency: json['currency'] as String,
-    customer: json['customer'] as String,
-    daysUntilDue: json['days_until_due'] as int,
-    defaultPaymentMethod: json['default_payment_method'] as String,
-    defaultSource: json['default_source'] as String,
-    defaultTaxRates: json['default_tax_rates'] as String,
+    coupon: json['coupon'] as String?,
+    currency: json['currency'] as String?,
+    customer: json['customer'] as String?,
+    daysUntilDue: json['days_until_due'] as int?,
+    defaultPaymentMethod: json['default_payment_method'] as String?,
+    defaultSource: json['default_source'] as String?,
+    defaultTaxRates: json['default_tax_rates'] as String?,
     interval: _$enumDecodeNullable(_$IntervalEnumMap, json['interval']),
-    items: (json['items'] as List)
-        ?.map((e) => e == null
-            ? null
-            : SubscriptionItemOpts.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    metadata: json['metadata'] as Map<String, dynamic>,
-    offSession: json['off_session'] as bool,
+    items: (json['items'] as List<dynamic>?)
+        ?.map((e) => SubscriptionItemOpts.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    offSession: json['off_session'] as bool?,
     paymentBehaviour: _$enumDecodeNullable(
         _$PaymentBehaviourEnumMap, json['payment_behaviour']),
-    plan: json['plan'] as String,
-    price: json['price'] as String,
-    quantity: json['quantity'] as String,
+    plan: json['plan'] as String?,
+    price: json['price'] as String?,
+    quantity: json['quantity'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$CreateSubscriptionOptsToJson(
@@ -90,7 +88,7 @@ Map<String, dynamic> _$CreateSubscriptionOptsToJson(
   writeNotNull('default_source', instance.defaultSource);
   writeNotNull('default_tax_rates', instance.defaultTaxRates);
   writeNotNull('interval', _$IntervalEnumMap[instance.interval]);
-  writeNotNull('items', instance.items?.map((e) => e?.toJson())?.toList());
+  writeNotNull('items', instance.items?.map((e) => e.toJson()).toList());
   writeNotNull('metadata', instance.metadata);
   writeNotNull('off_session', instance.offSession);
   writeNotNull('payment_behaviour',
@@ -101,36 +99,41 @@ Map<String, dynamic> _$CreateSubscriptionOptsToJson(
   return val;
 }
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$MethodEnumMap = {

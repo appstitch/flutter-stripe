@@ -12,8 +12,8 @@ class BillingThresholdsOpts {
     this.resetBillingCycleAnchor,
   });
 
-  int amountGte;
-  bool resetBillingCycleAnchor;
+  int? amountGte;
+  bool? resetBillingCycleAnchor;
 
   factory BillingThresholdsOpts.fromJson(Map<String, dynamic> json) =>
       _$BillingThresholdsOptsFromJson(json);

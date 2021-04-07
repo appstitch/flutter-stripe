@@ -6,8 +6,8 @@ part 'paymentMethodData.g.dart';
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class PaymentMethodData {
-  CreateCardOpts card;
-  String type;
+  CreateCardOpts? card;
+  String? type;
 
   PaymentMethodData({this.card, this.type});
 

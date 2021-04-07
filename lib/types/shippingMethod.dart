@@ -5,10 +5,10 @@ part 'shippingMethod.g.dart';
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class ShippingMethod {
-  String amount;
-  String detail;
-  String id;
-  String label;
+  String? amount;
+  String? detail;
+  String? id;
+  String? label;
 
   ShippingMethod({this.amount, this.detail, this.id, this.label});
 

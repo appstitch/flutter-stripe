@@ -1,10 +1,8 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 
-import 'package:flutter/material.dart';
-
 class Errors {
-  static Map<String, Map<String, String>> mapping = {
+  static Map<String, Map<String, String?>> mapping = {
     "busy": ErrorCode(
       errorCode: 'busy',
       description: 'Previous request is not completed',
@@ -23,11 +21,13 @@ class Errors {
     ).toJson(),
     "sourceStatusPending": ErrorCode(
       errorCode: 'sourceStatusPending',
-      description: 'The source has been created and is awaiting customer action',
+      description:
+          'The source has been created and is awaiting customer action',
     ).toJson(),
     "sourceStatusFailed": ErrorCode(
       errorCode: 'sourceStatusFailed',
-      description: "The source status is unknown. You shouldn't encounter this value.",
+      description:
+          "The source status is unknown. You shouldn't encounter this value.",
     ).toJson(),
     "sourceStatusUnknown": ErrorCode(
       errorCode: 'sourceStatusUnknown',
@@ -35,8 +35,11 @@ class Errors {
     ).toJson(),
     "deviceNotSupportsNativePay": ErrorCode(
             errorCode: 'deviceNotSupportsNativePay',
-            description: kIsWeb ? "Native Pay isn't supported in a web browser" :
-                Platform.isIOS ? 'This device does not support Apple Pay' : 'This device does not support Google Pay')
+            description: kIsWeb
+                ? "Native Pay isn't supported in a web browser"
+                : Platform.isIOS
+                    ? 'This device does not support Apple Pay'
+                    : 'This device does not support Google Pay')
         .toJson(),
     "noPaymentRequest": ErrorCode(
       errorCode: 'noPaymentRequest',
@@ -123,9 +126,10 @@ class Errors {
 
 class ErrorCode {
   final String errorCode;
-  final String description;
+  final String? description;
 
-  ErrorCode({@required this.errorCode, this.description});
+  ErrorCode({required this.errorCode, this.description});
 
-  Map<String, String> toJson() => {"errorCode": errorCode, "description": description};
+  Map<String, String?> toJson() =>
+      {"errorCode": errorCode, "description": description};
 }

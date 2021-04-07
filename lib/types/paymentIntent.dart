@@ -33,31 +33,31 @@ class PaymentIntent extends ConnectOptions {
     this.transferGroup,
   });
 
-  String clientSecret;
+  String? clientSecret;
 
-  int amount;
-  int amountRefunded;
-  int applicationFeeAmount;
-  String chargeName;
-  bool confirm;
-  int created;
-  String currency;
-  String customer;
-  String description;
-  String id;
-  String invoice;
-  Map<String, dynamic> metadata;
-  String object;
-  bool offSession;
-  String paymentMethod;
-  List<String> paymentMethodTypes;
-  String receiptEmail;
-  String statementDescriptor;
-  String statementDescriptorSuffix;
-  String status;
-  bool testMode;
-  TransferData transferData;
-  String transferGroup;
+  int? amount;
+  int? amountRefunded;
+  int? applicationFeeAmount;
+  String? chargeName;
+  bool? confirm;
+  int? created;
+  String? currency;
+  String? customer;
+  String? description;
+  String? id;
+  String? invoice;
+  Map<String, dynamic>? metadata;
+  String? object;
+  bool? offSession;
+  String? paymentMethod;
+  List<String>? paymentMethodTypes;
+  String? receiptEmail;
+  String? statementDescriptor;
+  String? statementDescriptorSuffix;
+  String? status;
+  bool? testMode;
+  TransferData? transferData;
+  String? transferGroup;
 
   factory PaymentIntent.fromJson(Map<String, dynamic> json) =>
       _$PaymentIntentFromJson(json);

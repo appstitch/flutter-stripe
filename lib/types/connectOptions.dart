@@ -7,7 +7,7 @@ part 'connectOptions.g.dart';
 class ConnectOptions extends Base {
   ConnectOptions({this.stripeAccount});
 
-  String stripeAccount;
+  String? stripeAccount;
 
   factory ConnectOptions.fromJson(Map<String, dynamic> json) =>
       _$ConnectOptionsFromJson(json);

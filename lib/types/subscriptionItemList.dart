@@ -7,9 +7,9 @@ part 'subscriptionItemList.g.dart';
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class SubscriptionItemList {
-  String object;
+  String? object;
 
-  List<SubscriptionItem> data;
+  List<SubscriptionItem>? data;
 
   SubscriptionItemList({this.object, this.data});
 

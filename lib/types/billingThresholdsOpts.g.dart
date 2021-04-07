@@ -9,8 +9,8 @@ part of appstitch_stripe;
 BillingThresholdsOpts _$BillingThresholdsOptsFromJson(
     Map<String, dynamic> json) {
   return BillingThresholdsOpts(
-    amountGte: json['amount_gte'] as int,
-    resetBillingCycleAnchor: json['reset_billing_cycle_anchor'] as bool,
+    amountGte: json['amount_gte'] as int?,
+    resetBillingCycleAnchor: json['reset_billing_cycle_anchor'] as bool?,
   );
 }
 

@@ -1,8 +1,8 @@
 import 'package:appstitch_stripe/types.dart';
 
 class CardFormPaymentRequest {
-  PrefilledInformation prefilledInformation;
-  String requiredBillingAddressFields;
+  PrefilledInformation? prefilledInformation;
+  String? requiredBillingAddressFields;
 
   CardFormPaymentRequest(
       {this.prefilledInformation, this.requiredBillingAddressFields});
@@ -22,14 +22,14 @@ class CardFormPaymentRequest {
         null) if (this.requiredBillingAddressFields != null)
       data['requiredBillingAddressFields'] = this.requiredBillingAddressFields;
     if (this.prefilledInformation != null) {
-      data['prefilledInformation'] = this.prefilledInformation.toJson();
+      data['prefilledInformation'] = this.prefilledInformation!.toJson();
     }
     return data;
   }
 }
 
 class PrefilledInformation {
-  BillingAddress billingAddress;
+  BillingAddress? billingAddress;
 
   PrefilledInformation({this.billingAddress});
 
@@ -44,20 +44,20 @@ class PrefilledInformation {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.billingAddress != null) {
-      data['billingAddress'] = this.billingAddress.toJson();
+      data['billingAddress'] = this.billingAddress!.toJson();
     }
     return data;
   }
 }
 
 class BillingAddress {
-  String city;
-  String country;
-  String line1;
-  String line2;
-  String name;
-  String postalCode;
-  String state;
+  String? city;
+  String? country;
+  String? line1;
+  String? line2;
+  String? name;
+  String? postalCode;
+  String? state;
 
   BillingAddress(
       {this.city,
@@ -94,10 +94,10 @@ class BillingAddress {
 }
 
 class PaymentMethodRequest {
-  final BillingAddress billingAddress;
-  final CreateCardOpts card;
-  final Token token;
-  final Map<String, String> metadata;
+  final BillingAddress? billingAddress;
+  final CreateCardOpts? card;
+  final Token? token;
+  final Map<String, String>? metadata;
 
   PaymentMethodRequest(
       {this.billingAddress, this.card, this.token, this.metadata}) {
@@ -107,13 +107,13 @@ class PaymentMethodRequest {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.card != null) {
-      data['card'] = card.toJson();
+      data['card'] = card!.toJson();
     }
     if (this.token != null) {
-      data['token'] = token.toJson();
+      data['token'] = token!.toJson();
     }
     if (this.billingAddress != null) {
-      data['billingAddress'] = this.billingAddress.toJson();
+      data['billingAddress'] = this.billingAddress!.toJson();
     }
     if (this.metadata != null) {
       if (this.metadata != null) data['metadata'] = this.metadata;
@@ -173,10 +173,10 @@ class PaymentMethodRequest {
 // }
 
 class BillingDetails {
-  BillingAddress address;
-  String email;
-  String name;
-  String phone;
+  BillingAddress? address;
+  String? email;
+  String? name;
+  String? phone;
 
   BillingDetails({this.address, this.email, this.name, this.phone});
 
@@ -197,7 +197,7 @@ class BillingDetails {
     if (this.name != null) data['name'] = this.name;
     if (this.phone != null) data['phone'] = this.phone;
     if (this.address != null) {
-      data['address'] = this.address.toJson();
+      data['address'] = this.address!.toJson();
     }
     return data;
   }

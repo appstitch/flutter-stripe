@@ -11,14 +11,14 @@ SubscriptionItem _$SubscriptionItemFromJson(Map<String, dynamic> json) {
     price: json['price'] == null
         ? null
         : Price.fromJson(json['price'] as Map<String, dynamic>),
-    quantity: json['quantity'] as int,
+    quantity: json['quantity'] as int?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) {

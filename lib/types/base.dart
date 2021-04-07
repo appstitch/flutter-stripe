@@ -7,14 +7,14 @@ class Base {
   Base({
     this.blueprintId,
   });
-  String blueprintId;
+  String? blueprintId;
 
-  String id;
+  String? id;
   @JsonKey(name: 'type')
-  String stripeError;
-  String message;
-  String param;
-  String object;
+  String? stripeError;
+  String? message;
+  String? param;
+  String? object;
 
   factory Base.fromJson(Map<String, dynamic> json) => _$BaseFromJson(json);
   Map<String, dynamic> toJson() => _$BaseToJson(this);

@@ -31,3 +31,7 @@ Stripe Example
 - Create a customer
 - Create a subscription
 - create a payment intent
+
+## [2.0.1-nullsafety.1] - Release
+
+- Cleaned up import usage

@@ -8,14 +8,14 @@ part of 'createSourceOpts.dart';
 
 CreateSourceOpts _$CreateSourceOptsFromJson(Map<String, dynamic> json) {
   return CreateSourceOpts(
-    amount: json['amount'] as int,
-    currency: json['currency'] as String,
-    returnURL: json['return_u_r_l'] as String,
-    type: json['type'] as String,
-    name: json['name'] as String,
-    statementDescriptor: json['statement_descriptor'] as String,
-    country: json['country'] as String,
-    email: json['email'] as String,
+    amount: json['amount'] as int?,
+    currency: json['currency'] as String?,
+    returnURL: json['return_u_r_l'] as String?,
+    type: json['type'] as String?,
+    name: json['name'] as String?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    country: json['country'] as String?,
+    email: json['email'] as String?,
     card: json['card'] == null
         ? null
         : CreditCard.fromJson(json['card'] as Map<String, dynamic>),

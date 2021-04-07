@@ -41,31 +41,31 @@ class CreateSubscriptionOpts extends ConnectOptions {
     this.quantity,
   });
 
-  bool active;
-  List<Map<String, dynamic>> addInvoiceItems;
-  int amount;
-  int applicationFeePercent;
-  int backdateStartSate;
-  int billingCycleAnchor;
-  BillingThresholdsOpts billingThresholds;
-  int cancelAt;
-  bool cancelAtPeriodEnd;
-  Method collectionMethod;
-  String coupon;
-  String currency;
-  String customer;
-  int daysUntilDue;
-  String defaultPaymentMethod;
-  String defaultSource;
-  String defaultTaxRates;
-  Interval interval;
-  List<SubscriptionItemOpts> items;
-  Map<String, dynamic> metadata;
-  bool offSession;
-  PaymentBehaviour paymentBehaviour;
-  String plan;
-  String price;
-  String quantity;
+  bool? active;
+  List<Map<String, dynamic>>? addInvoiceItems;
+  int? amount;
+  int? applicationFeePercent;
+  int? backdateStartSate;
+  int? billingCycleAnchor;
+  BillingThresholdsOpts? billingThresholds;
+  int? cancelAt;
+  bool? cancelAtPeriodEnd;
+  Method? collectionMethod;
+  String? coupon;
+  String? currency;
+  String? customer;
+  int? daysUntilDue;
+  String? defaultPaymentMethod;
+  String? defaultSource;
+  String? defaultTaxRates;
+  Interval? interval;
+  List<SubscriptionItemOpts>? items;
+  Map<String, dynamic>? metadata;
+  bool? offSession;
+  PaymentBehaviour? paymentBehaviour;
+  String? plan;
+  String? price;
+  String? quantity;
 
   factory CreateSubscriptionOpts.fromJson(Map<String, dynamic> json) =>
       _$CreateSubscriptionOptsFromJson(json);

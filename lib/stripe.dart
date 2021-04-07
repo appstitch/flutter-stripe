@@ -1,11 +1,14 @@
 library appstitch_stripe;
 
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:appstitch_core/core.dart';
 import 'package:appstitch_stripe/types.dart';
 import 'package:flutter/services.dart';
 import "package:appstitch_stripe/native_stripe.dart";
+
+export 'types.dart';
 
 class AppstitchStripe {
   Core core = Core();
@@ -17,7 +20,9 @@ class AppstitchStripe {
       AttachPaymentMethodOpts opts) async {
     final payload = opts.toJson();
 
-    final result = await core.makeRequst("Stripe/attachPaymentMethod", payload);
+    final result =
+        await (core.makeRequest("Stripe/attachPaymentMethod", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentMethod.fromJson(result);
   }
@@ -26,7 +31,9 @@ class AppstitchStripe {
       CreatePaymentIntentOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/createPaymentIntent", payload);
+    final result =
+        await (core.makeRequest("Stripe/createPaymentIntent", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentIntent.fromJson(result);
   }
@@ -35,7 +42,9 @@ class AppstitchStripe {
       UpdatePaymentIntentOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/updatePaymentIntent", payload);
+    final result =
+        await (core.makeRequest("Stripe/updatePaymentIntent", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentIntent.fromJson(result);
   }
@@ -45,7 +54,8 @@ class AppstitchStripe {
     final payload = toJson(opts);
 
     final result =
-        await core.makeRequst("Stripe/confirmPaymentIntent", payload);
+        await (core.makeRequest("Stripe/confirmPaymentIntent", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentIntent.fromJson(result);
   }
@@ -54,7 +64,9 @@ class AppstitchStripe {
       CreatePaymentIntentOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/cancelPaymentIntent", payload);
+    final result =
+        await (core.makeRequest("Stripe/cancelPaymentIntent", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentIntent.fromJson(result);
   }
@@ -63,7 +75,8 @@ class AppstitchStripe {
     final payload = toJson(opts);
 
     final result =
-        await core.makeRequst("Stripe/retrievePaymentIntent", payload);
+        await (core.makeRequest("Stripe/retrievePaymentIntent", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return PaymentIntent.fromJson(result);
   }
@@ -71,7 +84,8 @@ class AppstitchStripe {
   Future<Customer> createCustomer(CreateCustomerOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/createCustomer", payload);
+    final result = await (core.makeRequest("Stripe/createCustomer", payload)
+        as FutureOr<Map<String, dynamic>>);
 
     return Customer.fromJson(result);
   }
@@ -79,7 +93,8 @@ class AppstitchStripe {
   Future<Customer> updateCustomer(UpdateCustomerOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/updateCustomer", payload);
+    final result = await (core.makeRequest("Stripe/updateCustomer", payload)
+        as FutureOr<Map<String, dynamic>>);
 
     return Customer.fromJson(result);
   }
@@ -87,7 +102,8 @@ class AppstitchStripe {
   Future<Customer> retrieveCustomer(RetrieveOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/retrieveCustomer", payload);
+    final result = await (core.makeRequest("Stripe/retrieveCustomer", payload)
+        as FutureOr<Map<String, dynamic>>);
 
     return Customer.fromJson(result);
   }
@@ -95,7 +111,8 @@ class AppstitchStripe {
   Future<Subscription> createSubscription(CreateSubscriptionOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/createSubscription", payload);
+    final result = await (core.makeRequest("Stripe/createSubscription", payload)
+        as FutureOr<Map<String, dynamic>>);
 
     return Subscription.fromJson(result);
   }
@@ -103,7 +120,8 @@ class AppstitchStripe {
   Future<Subscription> cancelSubscription(RetrieveOpts opts) async {
     final payload = toJson(opts);
 
-    final result = await core.makeRequst("Stripe/cancelSubscription", payload);
+    final result = await (core.makeRequest("Stripe/cancelSubscription", payload)
+        as FutureOr<Map<String, dynamic>>);
 
     return Subscription.fromJson(result);
   }
@@ -112,7 +130,8 @@ class AppstitchStripe {
     final payload = toJson(opts);
 
     final result =
-        await core.makeRequst("Stripe/retrieveSubscription", payload);
+        await (core.makeRequest("Stripe/retrieveSubscription", payload)
+            as FutureOr<Map<String, dynamic>>);
 
     return Subscription.fromJson(result);
   }
@@ -134,7 +153,7 @@ class AppstitchStripe {
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/usage.html
-  static Future<bool> deviceSupportsNativePay() async {
+  static Future<bool?> deviceSupportsNativePay() async {
     if (kIsWeb) {
       return false;
     } else {
@@ -149,7 +168,7 @@ class AppstitchStripe {
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/canMakeNativePayPayments.html
-  static Future<bool> canMakeNativePayPayments(List<String> networks) async {
+  static Future<bool?> canMakeNativePayPayments(List<String> networks) async {
     if (kIsWeb) {
       throw UnimplementedError();
     } else {
@@ -163,22 +182,22 @@ class AppstitchStripe {
     }
   }
 
-  static Future<bool> _deviceSupportsAndroidPay() =>
+  static Future<bool?> _deviceSupportsAndroidPay() =>
       _channel.invokeMethod("deviceSupportsAndroidPay");
 
-  static Future<bool> _deviceSupportsApplePay() =>
+  static Future<bool?> _deviceSupportsApplePay() =>
       _channel.invokeMethod("deviceSupportsApplePay");
 
   /// https://tipsi.github.io/tipsi-stripe/docs/paymentRequestWithNativePay.html
   static Future<Token> paymentRequestWithNativePay(
-      {AndroidPayOpts androidPayOptions, ApplePayOpts applePayOptions}) {
+      {AndroidPayOpts? androidPayOptions, ApplePayOpts? applePayOptions}) {
     if (kIsWeb) {
       throw UnimplementedError();
     } else {
       if (Platform.isAndroid) {
-        return _paymentRequestWithAndroidPay(androidPayOptions);
+        return _paymentRequestWithAndroidPay(androidPayOptions!);
       } else if (Platform.isIOS) {
-        return _paymentRequestWithApplePay(applePayOptions);
+        return _paymentRequestWithApplePay(applePayOptions!);
       } else
         throw UnimplementedError();
     }
@@ -194,7 +213,7 @@ class AppstitchStripe {
   static Future<Token> _paymentRequestWithApplePay(ApplePayOpts options) async {
     final token = await _channel.invokeMethod("paymentRequestWithApplePay", {
       "options": options.toJson(),
-      "items": options.items.map((item) => item.toJson()).toList()
+      "items": options.items!.map((item) => item.toJson()).toList()
     });
     return Token.fromJson(token);
   }
@@ -267,8 +286,7 @@ class AppstitchStripe {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
   static Future<PaymentIntentResult> authenticatePaymentIntent(
-      {@required String clientSecret}) async {
-    assert(clientSecret != null);
+      {required String clientSecret}) async {
     final result = await _channel.invokeMethod(
         'authenticatePaymentIntent', {"clientSecret": clientSecret});
     return PaymentIntentResult.fromJson(result);
@@ -276,8 +294,7 @@ class AppstitchStripe {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticateSetupIntent.html
   static Future<SetupIntentResult> authenticateSetupIntent(
-      {@required String clientSecret}) async {
-    assert(clientSecret != null);
+      {required String clientSecret}) async {
     final result = await _channel.invokeMethod(
         'authenticateSetupIntent', {"clientSecret": clientSecret});
     return SetupIntentResult.fromJson(result);
@@ -295,12 +312,12 @@ class AppstitchStripe {
 }
 
 class StripeOptions {
-  final String publishableKey;
-  final String merchantId;
-  final String androidPayMode;
+  final String? publishableKey;
+  final String? merchantId;
+  final String? androidPayMode;
 
   StripeOptions(
-      {@required this.publishableKey, this.merchantId, this.androidPayMode});
+      {required this.publishableKey, this.merchantId, this.androidPayMode});
 
   factory StripeOptions.fromJson(Map<String, dynamic> json) {
     return StripeOptions(

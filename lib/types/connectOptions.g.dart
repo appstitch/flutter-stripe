@@ -8,14 +8,14 @@ part of 'connectOptions.dart';
 
 ConnectOptions _$ConnectOptionsFromJson(Map<String, dynamic> json) {
   return ConnectOptions(
-    stripeAccount: json['stripeAccount'] as String,
+    stripeAccount: json['stripeAccount'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$ConnectOptionsToJson(ConnectOptions instance) {

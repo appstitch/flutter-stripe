@@ -8,32 +8,32 @@ part of 'bankAccount.dart';
 
 BankAccount _$BankAccountFromJson(Map<String, dynamic> json) {
   return BankAccount(
-    accountHolderName: json['account_holder_name'] as String,
-    accountHolderType: json['account_holder_type'] as String,
-    accountNumber: json['account_number'] as String,
-    bankName: json['bank_name'] as String,
-    countryCode: json['country_code'] as String,
-    currency: json['currency'] as String,
-    fingerprint: json['fingerprint'] as String,
-    last4: json['last4'] as String,
-    routingNumber: json['routing_number'] as String,
+    accountHolderName: json['account_holder_name'] as String?,
+    accountHolderType: json['account_holder_type'] as String?,
+    accountNumber: json['account_number'] as String?,
+    bankName: json['bank_name'] as String?,
+    countryCode: json['country_code'] as String?,
+    currency: json['currency'] as String?,
+    fingerprint: json['fingerprint'] as String?,
+    last4: json['last4'] as String?,
+    routingNumber: json['routing_number'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..amount = json['amount'] as num
-    ..clientSecret = json['client_secret'] as String
-    ..created = json['created'] as num
-    ..flow = json['flow'] as String
-    ..sourceId = json['source_id'] as String
-    ..livemode = json['livemode'] as bool
-    ..metadata = json['metadata'] as Map<String, dynamic>
-    ..statementDescriptor = json['statement_descriptor'] as String
-    ..status = json['status'] as String
-    ..usage = json['usage'] as String
-    ..id = json['id'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..amount = json['amount'] as num?
+    ..clientSecret = json['client_secret'] as String?
+    ..created = json['created'] as num?
+    ..flow = json['flow'] as String?
+    ..sourceId = json['source_id'] as String?
+    ..livemode = json['livemode'] as bool?
+    ..metadata = json['metadata'] as Map<String, dynamic>?
+    ..statementDescriptor = json['statement_descriptor'] as String?
+    ..status = json['status'] as String?
+    ..usage = json['usage'] as String?
+    ..id = json['id'] as String?;
 }
 
 Map<String, dynamic> _$BankAccountToJson(BankAccount instance) {

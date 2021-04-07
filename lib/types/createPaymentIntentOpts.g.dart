@@ -9,47 +9,47 @@ part of appstitch_stripe;
 CreatePaymentIntentOpts _$CreatePaymentIntentOptsFromJson(
     Map<String, dynamic> json) {
   return CreatePaymentIntentOpts(
-    amount: json['amount'] as int,
-    applicationFeeAmount: json['application_fee_amount'] as int,
+    amount: json['amount'] as int?,
+    applicationFeeAmount: json['application_fee_amount'] as int?,
     captureMethod:
         _$enumDecodeNullable(_$MethodEnumMap, json['capture_method']),
-    confirm: json['confirm'] as bool,
+    confirm: json['confirm'] as bool?,
     confirmationMethod:
         _$enumDecodeNullable(_$MethodEnumMap, json['confirmation_method']),
-    currency: json['currency'] as String,
-    customer: json['customer'] as String,
-    description: json['description'] as String,
-    errorOnRequiresAction: json['error_on_requires_action'] as bool,
-    mandate: json['mandate'] as String,
-    metadata: json['metadata'] as Map<String, dynamic>,
-    offSession: json['off_session'] as bool,
-    onBehalfOf: json['on_behalf_of'] as String,
-    paymentMethod: json['payment_method'] as String,
-    paymentMethodTypes: (json['payment_method_types'] as List)
+    currency: json['currency'] as String?,
+    customer: json['customer'] as String?,
+    description: json['description'] as String?,
+    errorOnRequiresAction: json['error_on_requires_action'] as bool?,
+    mandate: json['mandate'] as String?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    offSession: json['off_session'] as bool?,
+    onBehalfOf: json['on_behalf_of'] as String?,
+    paymentMethod: json['payment_method'] as String?,
+    paymentMethodTypes: (json['payment_method_types'] as List<dynamic>?)
         ?.map((e) => e as String)
-        ?.toList(),
+        .toList(),
     paymentMethodData: json['payment_method_data'] == null
         ? null
         : PaymentMethodData.fromJson(
             json['payment_method_data'] as Map<String, dynamic>),
-    receiptEmail: json['receipt_email'] as String,
-    statementDescriptor: json['statement_descriptor'] as String,
-    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String,
+    receiptEmail: json['receipt_email'] as String?,
+    statementDescriptor: json['statement_descriptor'] as String?,
+    statementDescriptorSuffix: json['statement_descriptor_suffix'] as String?,
     transferData: json['transfer_data'] == null
         ? null
         : TransferData.fromJson(json['transfer_data'] as Map<String, dynamic>),
-    transferGroup: json['transfer_group'] as String,
+    transferGroup: json['transfer_group'] as String?,
     card: json['card'] == null
         ? null
         : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?;
 }
 
 Map<String, dynamic> _$CreatePaymentIntentOptsToJson(
@@ -96,36 +96,41 @@ Map<String, dynamic> _$CreatePaymentIntentOptsToJson(
   return val;
 }
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$MethodEnumMap = {

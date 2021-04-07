@@ -29,24 +29,24 @@ class Customer extends ConnectOptions {
     this.sources,
   });
 
-  Address address;
-  int balance;
-  int created;
-  String currency;
-  String defaultSource;
-  bool delinquent;
-  String description;
-  Discount discount;
-  String email;
-  String invoicePrefix;
-  Map<String, dynamic> invoiceSettings;
-  bool livemode;
-  Map<String, dynamic> metadata;
-  String name;
-  int nextInvoiceSequence;
-  String phone;
-  List<String> preferredLocales;
-  List<Source> sources;
+  Address? address;
+  int? balance;
+  int? created;
+  String? currency;
+  String? defaultSource;
+  bool? delinquent;
+  String? description;
+  Discount? discount;
+  String? email;
+  String? invoicePrefix;
+  Map<String, dynamic>? invoiceSettings;
+  bool? livemode;
+  Map<String, dynamic>? metadata;
+  String? name;
+  int? nextInvoiceSequence;
+  String? phone;
+  List<String>? preferredLocales;
+  List<Source>? sources;
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
       _$CustomerFromJson(json);

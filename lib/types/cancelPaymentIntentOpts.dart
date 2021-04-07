@@ -12,8 +12,8 @@ class CancelPaymentIntentOpts extends ConnectOptions {
     this.id,
   });
 
-  CancellationReason cancellationReason;
-  String id;
+  CancellationReason? cancellationReason;
+  String? id;
 
   factory CancelPaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$CancelPaymentIntentOptsFromJson(json);

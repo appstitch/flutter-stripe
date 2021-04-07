@@ -13,10 +13,10 @@ class Discount extends Base {
     this.subscription,
   });
 
-  String customer;
-  int end;
-  int start;
-  String subscription;
+  String? customer;
+  int? end;
+  int? start;
+  String? subscription;
 
   factory Discount.fromJson(Map<String, dynamic> json) =>
       _$DiscountFromJson(json);

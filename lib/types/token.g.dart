@@ -11,9 +11,9 @@ Token _$TokenFromJson(Map<String, dynamic> json) {
     card: json['card'] == null
         ? null
         : CreateCardOpts.fromJson(json['card'] as Map<String, dynamic>),
-    created: (json['created'] as num)?.toDouble(),
-    livemode: json['livemode'] as bool,
-    tokenId: json['token_id'] as String,
+    created: (json['created'] as num?)?.toDouble(),
+    livemode: json['livemode'] as bool?,
+    tokenId: json['token_id'] as String?,
   );
 }
 

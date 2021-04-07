@@ -8,19 +8,19 @@ part of 'address.dart';
 
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return Address(
-    city: json['city'] as String,
-    country: json['country'] as String,
-    line1: json['line1'] as String,
-    line2: json['line2'] as String,
-    postalCode: json['postal_code'] as String,
-    state: json['state'] as String,
+    city: json['city'] as String?,
+    country: json['country'] as String?,
+    line1: json['line1'] as String?,
+    line2: json['line2'] as String?,
+    postalCode: json['postal_code'] as String?,
+    state: json['state'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$AddressToJson(Address instance) {

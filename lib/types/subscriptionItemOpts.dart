@@ -17,12 +17,12 @@ class SubscriptionItemOpts {
     this.taxRates,
   });
 
-  Map<String, dynamic> billingThresholds;
-  Map<String, dynamic> metadata;
-  String price;
-  Price priceData;
-  int quantity;
-  List<String> taxRates;
+  Map<String, dynamic>? billingThresholds;
+  Map<String, dynamic>? metadata;
+  String? price;
+  Price? priceData;
+  int? quantity;
+  List<String>? taxRates;
 
   factory SubscriptionItemOpts.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionItemOptsFromJson(json);

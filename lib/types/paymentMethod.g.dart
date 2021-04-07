@@ -8,17 +8,17 @@ part of 'paymentMethod.dart';
 
 PaymentMethod _$PaymentMethodFromJson(Map<String, dynamic> json) {
   return PaymentMethod(
-    customer: json['customer'] as String,
-    id: json['id'] as String,
-    created: json['created'] as int,
-    metadata: json['metadata'] as Map<String, dynamic>,
+    customer: json['customer'] as String?,
+    id: json['id'] as String?,
+    created: json['created'] as int?,
+    metadata: json['metadata'] as Map<String, dynamic>?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String
-    ..stripeAccount = json['stripe_account'] as String
+    ..blueprintId = json['blueprint_id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?
+    ..stripeAccount = json['stripe_account'] as String?
     ..billingDetails = json['billing_details'] == null
         ? null
         : Address.fromJson(json['billing_details'] as Map<String, dynamic>);

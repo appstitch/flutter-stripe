@@ -15,14 +15,14 @@ class Address extends Base {
     this.state,
   });
 
-  String city;
-  String country;
-  String line1;
-  String line2;
-  String postalCode;
-  String state;
+  String? city;
+  String? country;
+  String? line1;
+  String? line2;
+  String? postalCode;
+  String? state;
 
   factory Address.fromJson(Map<dynamic, dynamic> json) =>
-      _$AddressFromJson(json);
+      _$AddressFromJson(json as Map<String, dynamic>);
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

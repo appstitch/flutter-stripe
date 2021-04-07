@@ -5,11 +5,11 @@ part 'androidPayLineItem.g.dart';
 @JsonSerializable(
     explicitToJson: true, includeIfNull: false, fieldRename: FieldRename.snake)
 class AndroidPayLineItem {
-  String currencyCode;
-  String description;
-  String quantity;
-  String totalPrice;
-  String unitPrice;
+  String? currencyCode;
+  String? description;
+  String? quantity;
+  String? totalPrice;
+  String? unitPrice;
 
   AndroidPayLineItem(
       {this.currencyCode,

@@ -9,9 +9,9 @@ part of 'attachPaymentMethodOpts.dart';
 AttachPaymentMethodOpts _$AttachPaymentMethodOptsFromJson(
     Map<String, dynamic> json) {
   return AttachPaymentMethodOpts(
-    customer: json['customer'] as String,
-    id: json['id'] as String,
-    setDefault: json['setDefault'] as bool,
+    customer: json['customer'] as String?,
+    id: json['id'] as String?,
+    setDefault: json['setDefault'] as bool?,
   );
 }
 

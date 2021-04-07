@@ -32,30 +32,30 @@ class CreditCard extends Source {
     this.tokenizationMethod,
   });
 
-  String addressCity;
-  String addressCountry;
-  String addressLine1;
-  String addressLine1Check;
-  String addressLine2;
-  String addressState;
-  String addressZip;
-  String addressZipCheck;
-  String brand;
-  String country;
-  String customer;
-  String cvcCheck;
-  String dynamicLast4;
-  int expMonth;
-  int expYear;
-  String fingerprint;
-  String funding;
-  String last4;
-  String id;
-  Map<String, dynamic> metadata;
-  String name;
-  String object;
-  String source;
-  String tokenizationMethod;
+  String? addressCity;
+  String? addressCountry;
+  String? addressLine1;
+  String? addressLine1Check;
+  String? addressLine2;
+  String? addressState;
+  String? addressZip;
+  String? addressZipCheck;
+  String? brand;
+  String? country;
+  String? customer;
+  String? cvcCheck;
+  String? dynamicLast4;
+  int? expMonth;
+  int? expYear;
+  String? fingerprint;
+  String? funding;
+  String? last4;
+  String? id;
+  Map<String, dynamic>? metadata;
+  String? name;
+  String? object;
+  String? source;
+  String? tokenizationMethod;
 
   factory CreditCard.fromJson(Map<String, dynamic> json) =>
       _$CreditCardFromJson(json);

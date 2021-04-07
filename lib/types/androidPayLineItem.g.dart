@@ -8,11 +8,11 @@ part of 'androidPayLineItem.dart';
 
 AndroidPayLineItem _$AndroidPayLineItemFromJson(Map<String, dynamic> json) {
   return AndroidPayLineItem(
-    currencyCode: json['currency_code'] as String,
-    description: json['description'] as String,
-    quantity: json['quantity'] as String,
-    totalPrice: json['total_price'] as String,
-    unitPrice: json['unit_price'] as String,
+    currencyCode: json['currency_code'] as String?,
+    description: json['description'] as String?,
+    quantity: json['quantity'] as String?,
+    totalPrice: json['total_price'] as String?,
+    unitPrice: json['unit_price'] as String?,
   );
 }
 

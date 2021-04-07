@@ -8,9 +8,9 @@ part of 'applePayLineItem.dart';
 
 ApplePayLineItem _$ApplePayLineItemFromJson(Map<String, dynamic> json) {
   return ApplePayLineItem(
-    label: json['label'] as String,
-    amount: json['amount'] as String,
-    type: json['type'] as String,
+    label: json['label'] as String?,
+    amount: json['amount'] as String?,
+    type: json['type'] as String?,
   );
 }
 

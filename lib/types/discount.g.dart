@@ -8,17 +8,17 @@ part of 'discount.dart';
 
 Discount _$DiscountFromJson(Map<String, dynamic> json) {
   return Discount(
-    customer: json['customer'] as String,
-    end: json['end'] as int,
-    start: json['start'] as int,
-    subscription: json['subscription'] as String,
+    customer: json['customer'] as String?,
+    end: json['end'] as int?,
+    start: json['start'] as int?,
+    subscription: json['subscription'] as String?,
   )
-    ..blueprintId = json['blueprint_id'] as String
-    ..id = json['id'] as String
-    ..stripeError = json['type'] as String
-    ..message = json['message'] as String
-    ..param = json['param'] as String
-    ..object = json['object'] as String;
+    ..blueprintId = json['blueprint_id'] as String?
+    ..id = json['id'] as String?
+    ..stripeError = json['type'] as String?
+    ..message = json['message'] as String?
+    ..param = json['param'] as String?
+    ..object = json['object'] as String?;
 }
 
 Map<String, dynamic> _$DiscountToJson(Discount instance) {

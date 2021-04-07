@@ -19,16 +19,16 @@ class ConfirmPaymentIntentOpts extends ConnectOptions {
     this.statementDescriptorSuffix,
   });
 
-  String id;
-  bool errorOnRequiresAction;
-  String mandate;
-  bool offSession;
-  String onBehalfOf;
-  String paymentMethod;
-  List<String> paymentMethodTypes;
-  String receiptEmail;
-  String statementDescriptor;
-  String statementDescriptorSuffix;
+  String? id;
+  bool? errorOnRequiresAction;
+  String? mandate;
+  bool? offSession;
+  String? onBehalfOf;
+  String? paymentMethod;
+  List<String>? paymentMethodTypes;
+  String? receiptEmail;
+  String? statementDescriptor;
+  String? statementDescriptorSuffix;
 
   factory ConfirmPaymentIntentOpts.fromJson(Map<String, dynamic> json) =>
       _$ConfirmPaymentIntentOptsFromJson(json);

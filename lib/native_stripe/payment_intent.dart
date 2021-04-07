@@ -25,9 +25,9 @@
 // }
 
 class PaymentIntentResult {
-  String status;
-  String paymentIntentId;
-  String paymentMethodId;
+  String? status;
+  String? paymentIntentId;
+  String? paymentMethodId;
 
   PaymentIntentResult(
       {this.status, this.paymentIntentId, this.paymentMethodId});
@@ -52,9 +52,9 @@ class PaymentIntentResult {
 }
 
 class SetupIntentResult {
-  String status;
-  String paymentIntentId;
-  String setupIntentId;
+  String? status;
+  String? paymentIntentId;
+  String? setupIntentId;
 
   SetupIntentResult({
     this.status,
